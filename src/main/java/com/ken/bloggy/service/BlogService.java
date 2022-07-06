@@ -23,11 +23,11 @@ public class BlogService {
         return blogs;
     }
 
-    public List<Blog> getBlogsByAuthor(int id){
-        return blogRepository.findAllByAuthorId(id);
-    }
+//    public List<Blog> getBlogsByAuthor(long id){
+//        return blogRepository.findAllByAuthorId(id);
+//    }
 
-    public Blog getBlogById(int id){
+    public Blog getBlogById(long id){
         if(blogRepository.existsById(id)){
             return blogRepository.findById(id).get();
         }
@@ -42,7 +42,7 @@ public class BlogService {
         blogRepository.save(blog);
     }
 
-    public void deleteBlog(int id){
+    public void deleteBlog(long id){
         blogRepository.deleteById(id);
     }
 }

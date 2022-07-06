@@ -22,7 +22,7 @@ public class BlogController {
     }
 
     @GetMapping("/blog/{id}")
-    public Blog getBlogById(@PathVariable int id){
+    public Blog getBlogById(@PathVariable long id){
         return blogService.getBlogById(id);
     }
 
@@ -37,7 +37,7 @@ public class BlogController {
     }
 
     @DeleteMapping("/blog/{id}")
-    public void deleteBlog(@PathVariable int id){
+    public void deleteBlog(@PathVariable long id){
         blogService.deleteBlog(id);
     }
 }

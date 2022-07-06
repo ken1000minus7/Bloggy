@@ -1,34 +1,34 @@
 package com.ken.bloggy.model;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
+import javax.persistence.*;
 
 @Entity
 public class Blog {
     @Id
-    private int id;
+    @SequenceGenerator(name = "blog_sequence",sequenceName = "blog_sequence",allocationSize = 1)
+    @Column(nullable = false, updatable = false)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "blog_sequence")
+    private long id;
     private String title;
     private String content;
-    @ManyToOne
-    private User author;
+//    @ManyToOne
+//    private User author;
 
-    public Blog(int id, String title, String content, User author) {
-        this.id = id;
+    public Blog(String title, String content) {
         this.title = title;
         this.content = content;
-        this.author = author;
+//        this.author = author;
     }
 
     public Blog(){
 
     }
 
-    public int getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(long id) {
         this.id = id;
     }
 
@@ -48,11 +48,11 @@ public class Blog {
         this.content = content;
     }
 
-    public User getAuthor() {
-        return author;
-    }
-
-    public void setAuthor(User author) {
-        this.author = author;
-    }
+//    public User getAuthor() {
+//        return author;
+//    }
+//
+//    public void setAuthor(User author) {
+//        this.author = author;
+//    }
 }
