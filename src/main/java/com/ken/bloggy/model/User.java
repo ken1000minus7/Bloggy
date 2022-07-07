@@ -7,6 +7,7 @@ import java.util.Arrays;
 import java.util.List;
 
 @Entity
+@Table(name = "user_table")
 public class User {
     @Id
     @SequenceGenerator(name = "user_sequence",sequenceName = "user_sequence",allocationSize = 1)
@@ -20,7 +21,7 @@ public class User {
     @Column(nullable = false)
     private String password;
 
-    private boolean active;
+    private boolean active = true;
 
     @Column(unique = true, nullable = false)
     private String email;
@@ -66,8 +67,13 @@ public class User {
     public User(){
 
     }
-    public User(String username) {
+
+    public User(String username, String password, String email, String firstName, String lastName) {
         this.username = username;
+        this.password = password;
+        this.email = email;
+        this.firstName = firstName;
+        this.lastName = lastName;
     }
 
     public long getId() {
