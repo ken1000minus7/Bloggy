@@ -1,6 +1,10 @@
 package com.ken.bloggy.model;
 
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+
 import javax.persistence.*;
+import java.util.Arrays;
+import java.util.List;
 
 @Entity
 public class User {
@@ -12,6 +16,11 @@ public class User {
 
     @Column(unique = true, updatable = false,nullable = false)
     private String username;
+
+    @Column(nullable = false)
+    private String password;
+
+    private boolean active;
 
     @Column(unique = true, nullable = false)
     private String email;
@@ -28,6 +37,14 @@ public class User {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public String getFirstName() {
@@ -68,4 +85,14 @@ public class User {
     public void setUsername(String username) {
         this.username = username;
     }
+
+    public UserDetail toUserDetail(){
+        return new UserDetail(
+                username,
+                password,
+                active,
+                List.of(new SimpleGrantedAuthority("user"))
+        );
+    }
+
 }
