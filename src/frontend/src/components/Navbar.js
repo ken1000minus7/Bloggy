@@ -1,13 +1,15 @@
 import React, {useEffect, useState} from "react";
 import {Link} from "react-router-dom";
-import {Switch, TextField} from "@mui/material";
+import {Switch} from "@mui/material";
 
 export const Navbar = ({changeTheme})=>{
     const [username,setUsername] = useState(null)
 
     useEffect(()=>{
-        setUsername(localStorage.getItem("username"))
-    },[localStorage.getItem("username")])
+        window.addEventListener("storage",()=>{
+            setUsername(localStorage.getItem("username"))
+        })
+    },[])
 
     return (
         <div className="flex flex-row items-center shadow-[rgba(99,99,99,0.2)_0_2px_8px_0] bg-[#ede7f6]">
