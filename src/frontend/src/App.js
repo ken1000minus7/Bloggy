@@ -5,15 +5,35 @@ import {Route, Routes} from "react-router";
 import {NotFound} from "./pages/NotFound";
 import {HomePage} from "./pages/HomePage";
 import {BlogPage} from "./pages/BlogPage";
+import {LoginPage} from "./pages/LoginPage";
+import {ProfilePage} from "./pages/ProfilePage";
 
 function App() {
+    if(localStorage.getItem("theme")==null)
+        localStorage.setItem("theme","light")
+
+    const changeTheme = (event)=>{
+        let theme = localStorage.getItem("theme")
+        if((theme==="dark")!==event.target.checked){
+            if(theme==="dark"){
+                theme = "light"
+            }
+            else{
+                theme = "dark"
+            }
+            localStorage.setItem("theme",theme)
+        }
+        console.log(localStorage.getItem("theme"))
+    }
     return (
         <div className="App">
-            <Navbar/>
+            <Navbar changeTheme={changeTheme}/>
             <Routes>
                 <Route index element={<HomePage />} />
                 <Route exact path="/home" element={<HomePage />} />
+                <Route exact path="/login" element={<LoginPage />} />
                 <Route exact path="/blog/:id" element={<BlogPage />} />
+                <Route exact path="/user/:username" element={<ProfilePage />} />
                 <Route exact path="*" element={<NotFound />} />
             </Routes>
         </div>

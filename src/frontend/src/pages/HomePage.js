@@ -13,9 +13,14 @@ export const HomePage = ()=>{
     },[])
     return(
         <div>
-            {
-                latestBlogs ? <BlogList blogList={latestBlogs} /> : <div>Hello</div>
-            }
+            <div className="flex flex-row scroll">
+
+            </div>
+            <div>
+                {
+                    latestBlogs ? <BlogList blogList={latestBlogs} /> : <div>Hello</div>
+                }
+            </div>
         </div>
     )
 }
