@@ -4,6 +4,7 @@ import com.ken.bloggy.model.Blog;
 import com.ken.bloggy.repository.BlogRepository;
 import com.ken.bloggy.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -21,7 +22,7 @@ public class BlogService {
     }
 
     public List<Blog> getAllBlogs(){
-        return new ArrayList<>(blogRepository.findAll());
+        return new ArrayList<>(blogRepository.findAll(Sort.by(Sort.Direction.DESC,"creationTime")));
     }
 
     public List<Blog> getBlogsByAuthor(String username){
