@@ -2,7 +2,13 @@ import React, {useState} from "react";
 import {useNavigate} from "react-router";
 import typingAnimation from '../assets/typinganimation.json'
 import Lottie from "react-lottie-player";
-import {Button, FormControl, InputLabel, OutlinedInput, Tab, Tabs} from "@mui/material";
+import {
+    Button,
+    Tab,
+    Tabs,
+    TextField
+} from "@mui/material";
+import axios from "axios";
 
 export const LoginPage = ()=>{
     let navigate = useNavigate()
@@ -16,6 +22,7 @@ export const LoginPage = ()=>{
     const changeValue = (event,newValue)=>{
         setUsername("")
         setPassword("")
+        setConfirmPassword("")
         setFirstName("")
         setLastName("")
         setEmail("")
@@ -24,6 +31,7 @@ export const LoginPage = ()=>{
 
     const [username,setUsername] = useState("")
     const [password,setPassword] = useState("")
+    const [confirmPassword,setConfirmPassword] = useState("")
     const [firstName,setFirstName] = useState("")
     const [lastName,setLastName] = useState("")
     const [email,setEmail] = useState("")
@@ -34,6 +42,10 @@ export const LoginPage = ()=>{
 
     const changePassword = (event)=>{
         setPassword(event.target.value)
+    }
+
+    const changeConfirmPassword = (event)=>{
+        setConfirmPassword(event.target.value)
     }
 
     const changeFirstName = (event)=>{
@@ -49,11 +61,62 @@ export const LoginPage = ()=>{
     }
 
     const handleLogin = ()=>{
-
+        if(username.length===0 || password.length===0){
+            alert("One or more fields are empty")
+            return
+        }
+        axios({
+            method : "POST",
+            url : `${process.env.REACT_APP_API_BASE_URL}/authenticate`,
+            headers : {
+                "Content-Type" : "application/json"
+            },
+            data : {
+                "username" : username,
+                "password" : password
+            }
+        })
+            .then(response =>{
+                localStorage.setItem("username",username)
+                localStorage.setItem("jwtToken",response.data.token)
+                navigate("/")
+            })
+            .catch(error=>{
+                alert(error.response.data)
+            })
     }
 
     const handleRegister = ()=>{
-
+        if(username.length===0 || password.length===0 || firstName.length===0 || lastName.length===0 || email.length===0){
+            alert("One or more fields are empty")
+            return
+        }
+        if(password!==confirmPassword){
+            alert("Confirm password does not match")
+            return
+        }
+        axios({
+            method : "POST",
+            url : `${process.env.REACT_APP_API_BASE_URL}/user`,
+            headers : {
+                "Content-Type" : "application/json"
+            },
+            data : {
+                "username" : username,
+                "password" : password,
+                "firstName" : firstName,
+                "lastName" : lastName,
+                "email" : email
+            }
+        })
+            .then(response =>{
+                localStorage.setItem("username",username)
+                localStorage.setItem("jwtToken",response.data.token)
+                navigate("/")
+            })
+            .catch(error=>{
+                alert(error.response.data)
+            })
     }
 
     return (
@@ -75,26 +138,107 @@ export const LoginPage = ()=>{
                     </Tabs>
                     {
                         (value===0) ? (
-                            <div className="flex flex-col w-[100%] h-[100%] place-content-evenly items-center ">
-                                <FormControl className="w-[90%]" margin="dense">
-                                    <InputLabel>Username</InputLabel>
-                                    <OutlinedInput label="Username"/>
-                                </FormControl>
-                                <FormControl className="w-[90%]" margin="dense">
-                                    <InputLabel>Password</InputLabel>
-                                    <OutlinedInput label="Password" type="password"/>
-                                </FormControl>
+                            <div className="flex flex-col w-[100%] h-[100%] place-content-evenly items-center pt-[2px]">
+                                <TextField
+                                    label="Username"
+                                    value={username}
+                                    variant="outlined"
+                                    className="w-[90%]"
+                                    margin="dense"
+                                    onChange={changeUsername}
+                                />
+                                <TextField
+                                    label="Password"
+                                    value={password}
+                                    type="password"
+                                    variant="outlined"
+                                    className="w-[90%]"
+                                    margin="dense"
+                                    onChange={changePassword}
+                                />
                                 <div className="mb-[40px]">
                                     <div className="mb-[10px]">
                                         New user? <Button onClick={(event)=>{changeValue(event,1)}}>Register</Button>
                                     </div>
-                                    <Button variant="outlined" className="m-[10px]" style={{fontSize : "20px"}}>Login</Button>
+                                    <Button
+                                        variant="outlined"
+                                        className="m-[10px]"
+                                        style={{fontSize : "20px"}}
+                                        onClick={handleLogin}
+                                    >
+                                        Login
+                                    </Button>
                                 </div>
 
                             </div>
                         ) : (
-                            <div>
-                                Register
+                            <div className="flex flex-col w-[100%] h-[100%] place-content-evenly items-center ">
+                                <div className="flex flex-row w-[90%]">
+                                    <TextField
+                                        label="First Name"
+                                        value={firstName}
+                                        variant="outlined"
+                                        onChange={changeFirstName}
+                                        className="flex-1"
+                                        style={{marginRight : "10px"}}
+                                    />
+                                    <TextField
+                                        label="Last Name"
+                                        value={lastName}
+                                        variant="outlined"
+                                        onChange={changeLastName}
+                                        className="flex-1"
+                                        style={{marginLeft : "10px"}}
+                                    />
+                                </div>
+                                <TextField
+                                    label="Username"
+                                    value={username}
+                                    variant="outlined"
+                                    className="w-[90%]"
+                                    onChange={changeUsername}
+                                />
+                                <TextField
+                                    label="Email"
+                                    value={email}
+                                    type="email"
+                                    variant="outlined"
+                                    className="w-[90%]"
+                                    onChange={changeEmail}
+                                />
+                                <div className="flex flex-row w-[90%]">
+                                    <TextField
+                                        label="Password"
+                                        value={password}
+                                        type="password"
+                                        variant="outlined"
+                                        onChange={changePassword}
+                                        className="flex-1"
+                                        style={{marginRight : "10px"}}
+                                    />
+                                    <TextField
+                                        label="Confirm Password"
+                                        value={confirmPassword}
+                                        type="password"
+                                        variant="outlined"
+                                        onChange={changeConfirmPassword}
+                                        className="flex-1"
+                                        style={{marginLeft : "10px"}}
+                                    />
+                                </div>
+                                <div className="mb-[55px]">
+                                    <div>
+                                        Already have an account? <Button onClick={(event)=>{changeValue(event,0)}}>Login</Button>
+                                    </div>
+                                    <Button
+                                        variant="outlined"
+                                        style={{fontSize : "20px"}}
+                                        onClick={handleRegister}
+                                    >
+                                        Register
+                                    </Button>
+                                </div>
+
                             </div>
                         )
                     }
