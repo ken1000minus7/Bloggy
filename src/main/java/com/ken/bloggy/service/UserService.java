@@ -15,9 +15,19 @@ public class UserService {
     }
 
     public void addUser(User user) throws Exception{
-        if(userRepository.existsByUsername(user.getUsername()) || userRepository.existsByEmail(user.getEmail())){
-            throw new Exception("User already exists");
+        if(userRepository.existsByUsername(user.getUsername())){
+            throw new IllegalArgumentException("User with username "+user.getUsername()+" already exists");
+        }
+        else if(userRepository.existsByEmail(user.getEmail())){
+            throw new IllegalArgumentException("User with email "+user.getEmail()+" already exists");
         }
         userRepository.save(user);
+    }
+
+    public User getUser(String username){
+        if(!userRepository.existsByUsername(username)){
+            throw new IllegalArgumentException("User with username "+username+" does not exist");
+        }
+        return userRepository.findUserByUsername(username).get();
     }
 }

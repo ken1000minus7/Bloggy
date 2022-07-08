@@ -1,8 +1,12 @@
 package com.ken.bloggy.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -31,6 +35,14 @@ public class User {
 
     @Column(nullable = false)
     private String lastName;
+
+    @OneToMany(mappedBy = "author",orphanRemoval = true)
+    @JsonIgnore
+    private List<Blog> blogs = new ArrayList<>();
+
+    public List<Blog> getBlogs() {
+        return blogs;
+    }
 
     public String getEmail() {
         return email;

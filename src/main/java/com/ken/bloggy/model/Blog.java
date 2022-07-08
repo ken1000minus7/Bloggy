@@ -1,5 +1,8 @@
 package com.ken.bloggy.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import javax.persistence.*;
 
 @Entity
@@ -11,13 +14,16 @@ public class Blog {
     private long id;
     private String title;
     private String content;
-//    @ManyToOne
-//    private User author;
+
+    private long creationTime;
+
+    @ManyToOne
+    @JoinColumn(name = "author_id")
+    private User author;
 
     public Blog(String title, String content) {
         this.title = title;
         this.content = content;
-//        this.author = author;
     }
 
     public Blog(){
@@ -48,11 +54,19 @@ public class Blog {
         this.content = content;
     }
 
-//    public User getAuthor() {
-//        return author;
-//    }
-//
-//    public void setAuthor(User author) {
-//        this.author = author;
-//    }
+    public User getAuthor() {
+        return author;
+    }
+
+    public void setAuthor(User author) {
+        this.author = author;
+    }
+
+    public long getCreationTime() {
+        return creationTime;
+    }
+
+    public void setCreationTime(long createdAt) {
+        this.creationTime = createdAt;
+    }
 }

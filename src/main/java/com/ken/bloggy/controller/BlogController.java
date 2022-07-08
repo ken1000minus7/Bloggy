@@ -3,6 +3,8 @@ package com.ken.bloggy.controller;
 import com.ken.bloggy.model.Blog;
 import com.ken.bloggy.service.BlogService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -26,9 +28,24 @@ public class BlogController {
         return blogService.getBlogById(id);
     }
 
-    @PostMapping("/blog")
-    public void addBlog(@RequestBody Blog blog){
-        blogService.addBlog(blog);
+    @GetMapping("/user/{username}/blog")
+    public ResponseEntity<?> getBlogsByAuthor(@PathVariable String username){
+        try {
+            return ResponseEntity.ok(blogService.getBlogsByAuthor(username));
+        }catch (Exception e){
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("User does not exist");
+        }
+    }
+
+    @PostMapping("/user/{username}/blog")
+    public ResponseEntity<?> addBlog(@RequestBody Blog blog, @PathVariable String username){
+        try {
+            blogService.addBlog(blog,username);
+        }catch (Exception e){
+            e.printStackTrace();
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("User does not exist");
+        }
+        return ResponseEntity.ok("Blog added");
     }
 
     @PutMapping("/blog")

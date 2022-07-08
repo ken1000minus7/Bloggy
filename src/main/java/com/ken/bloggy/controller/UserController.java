@@ -12,9 +12,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 public class UserController {
@@ -55,5 +53,16 @@ public class UserController {
         UserDetails userDetails = userDetailService.loadUserByUsername(user.getUsername());
         String token = jwtService.generateToken(userDetails);
         return ResponseEntity.ok(new AuthenticationResponse(token));
+    }
+
+    @GetMapping("/user/{username}")
+    public ResponseEntity<?> getUser(@PathVariable String username){
+        try {
+            User user = userService.getUser(username);
+            return ResponseEntity.ok(user);
+        }catch (Exception e){
+            e.printStackTrace();
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("User does not exist");
+        }
     }
 }
