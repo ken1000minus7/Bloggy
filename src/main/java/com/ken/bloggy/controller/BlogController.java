@@ -46,7 +46,7 @@ public class BlogController {
             e.printStackTrace();
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("User does not exist");
         }
-        return ResponseEntity.ok("Blog added");
+        return ResponseEntity.ok(blogService.getAllBlogs().get(0).getId());
     }
 
     @PutMapping("/blog")

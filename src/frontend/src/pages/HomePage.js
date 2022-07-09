@@ -18,7 +18,7 @@ export const HomePage = ()=>{
             </div>
             <div>
                 {
-                    latestBlogs ? <BlogList blogList={latestBlogs} /> : <div>Hello</div>
+                    latestBlogs && <BlogList blogList={latestBlogs} />
                 }
             </div>
         </div>

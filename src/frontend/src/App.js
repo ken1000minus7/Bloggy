@@ -7,6 +7,7 @@ import {HomePage} from "./pages/HomePage";
 import {BlogPage} from "./pages/BlogPage";
 import {LoginPage} from "./pages/LoginPage";
 import {ProfilePage} from "./pages/ProfilePage";
+import {CreatePage} from "./pages/CreatePage";
 
 function App() {
     if(localStorage.getItem("theme")==null)
@@ -33,6 +34,7 @@ function App() {
                 <Route exact path="/home" element={<HomePage />} />
                 <Route exact path="/login" element={<LoginPage />} />
                 <Route exact path="/blog/:id" element={<BlogPage />} />
+                <Route exact path="/create" element={<CreatePage/>} />
                 <Route exact path="/user/:username" element={<ProfilePage />} />
                 <Route exact path="*" element={<NotFound />} />
             </Routes>

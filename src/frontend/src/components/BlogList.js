@@ -8,7 +8,7 @@ export const BlogList = ({blogList}) => {
             {
                 blogList && blogList.map((blog)=>{
                     return (
-                        <Fade direction="up">
+                        <Fade direction="up" triggerOnce>
                             <BlogCard blog={blog} key={blog.id}/>
                         </Fade>
                     )
