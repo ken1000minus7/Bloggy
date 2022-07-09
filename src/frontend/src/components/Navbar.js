@@ -1,14 +1,19 @@
 import React, {useEffect, useState} from "react";
 import {Link} from "react-router-dom";
-import {Switch} from "@mui/material";
+import {Button, Switch} from "@mui/material";
 
 export const Navbar = ({changeTheme})=>{
-    const [username,setUsername] = useState(null)
+    const [username,setUsername] = useState(localStorage.getItem("username"))
 
     useEffect(()=>{
-        window.addEventListener("storage",()=>{
+        const handleStorage = ()=>{
             setUsername(localStorage.getItem("username"))
-        })
+            console.log(username)
+        }
+        window.addEventListener("storage",handleStorage)
+        return ()=>{
+            window.removeEventListener("storage",handleStorage)
+        }
     },[])
 
     return (
@@ -22,9 +27,13 @@ export const Navbar = ({changeTheme})=>{
             {/*<img src="https://assets.leetcode.com/users/avatars/avatar_1655063000.png" className="rounded-[50%] h-[60px] mx-[10px]"/>*/}
             {
                 username ? (
-                    <Link to={`/user/${username}`} >
+                    <Button onClick={()=>{
+                        localStorage.removeItem("jwtToken")
+                        localStorage.removeItem("username")
+                        window.dispatchEvent(new Event("storage"))
+                    }}>
                         {username}
-                    </Link>
+                    </Button>
                 ) : (
                     <Link to={"/login"} className="font-bold text-[20px] my-[10px] mx-[20px]">
                         Login

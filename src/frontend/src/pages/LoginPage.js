@@ -79,6 +79,7 @@ export const LoginPage = ()=>{
             .then(response =>{
                 localStorage.setItem("username",username)
                 localStorage.setItem("jwtToken",response.data.token)
+                window.dispatchEvent(new Event("storage"))
                 navigate("/")
             })
             .catch(error=>{
@@ -112,6 +113,7 @@ export const LoginPage = ()=>{
             .then(response =>{
                 localStorage.setItem("username",username)
                 localStorage.setItem("jwtToken",response.data.token)
+                window.dispatchEvent(new Event("storage"))
                 navigate("/")
             })
             .catch(error=>{
