@@ -1,5 +1,6 @@
 import React from "react";
 import {Link} from "react-router-dom";
+import ReactMarkdown from "react-markdown";
 
 export const BlogCard = ({blog}) => {
     return (
@@ -7,9 +8,9 @@ export const BlogCard = ({blog}) => {
             <div className="font-bold text-[40px]">
                 {blog.title}
             </div>
-            <div className="h-[100px] text-ellipsis overflow-hidden">
+            <ReactMarkdown className="h-[100px] text-ellipsis overflow-hidden">
                 {blog.content}
-            </div>
+            </ReactMarkdown>
             <div className="flex flex-row">
                 <span>By {blog.author.username}</span>
             </div>

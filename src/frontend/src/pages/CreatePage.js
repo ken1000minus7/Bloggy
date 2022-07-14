@@ -3,6 +3,8 @@ import {Button, InputLabel, Tab, Tabs, TextField} from "@mui/material";
 import ReactMarkdown from "react-markdown";
 import axios from "axios";
 import {useNavigate} from "react-router";
+import Lottie from "react-lottie-player";
+import writerAnimation from '../assets/writer.json'
 
 export const CreatePage = ()=>{
     let navigate = useNavigate()
@@ -51,15 +53,28 @@ export const CreatePage = ()=>{
 
     return (
         <div>
-            <div>
-                <InputLabel>Title</InputLabel>
+            <div className="flex flex-row items-center justify-center">
+                <div className="text-[45px] font-bold my-[20px]">
+                    Pour your creativity into words
+                </div>
+                <Lottie
+                    play
+                    loop
+                    animationData={writerAnimation}
+                    className="h-[80px]"
+                    />
+            </div>
+            <div className="mx-[20px] my-[10px]">
                 <TextField
                     variant="outlined"
                     value={title}
+                    placeholder="Title"
+                    fullWidth
+                    inputProps={{ style :{textAlign : "center", fontWeight : "bold", fontSize : "30px" , fontFamily : "serif", padding : "10px"}}}
                     onChange={changeTitle}
                 />
             </div>
-            <div>
+            <div className="mx-[20px] my-[10px] shadow-lg h-[450px] flex flex-col rounded-[10px]">
                 <Tabs value={value} onChange={changeValue}>
                     <Tab label="Edit" />
                     <Tab label="Preview" />
@@ -69,22 +84,30 @@ export const CreatePage = ()=>{
                         <TextField
                             multiline
                             value={content}
+                            rows={16}
+                            fullWidth
                             onChange={changeContent}
+                            placeholder="Your blog"
                         />
 
                     ) : (
                         <ReactMarkdown
-                            children={content}
-                        />
+                            className="text-left p-[15px] text-[17px] overflow-y-auto h-[100%] w-[100%]"
+                        >
+                            {content}
+                        </ReactMarkdown>
                     )
                 }
             </div>
-            <Button
-                onClick={handleCreate}
-                className="text-[30px]"
-            >
-                Create
-            </Button>
+            <center>
+                <Button
+                    onClick={handleCreate}
+                    style={{fontSize : "22px", margin : "15px"}}
+                    variant="outlined"
+                >
+                    Create
+                </Button>
+            </center>
         </div>
     )
 }
