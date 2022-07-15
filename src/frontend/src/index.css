@@ -72,4 +72,16 @@
     margin: 1em 0;
     padding-left: 40px;
   }
+
+  p {
+    display: block;
+    margin: 1em 0;
+  }
+
+  pre {
+    display: block;
+    font-family: monospace;
+    white-space: pre;
+    margin: 1em 0;
+  }
 }

@@ -89,7 +89,6 @@ export const CreatePage = ()=>{
                             onChange={changeContent}
                             placeholder="Your blog"
                         />
-
                     ) : (
                         <ReactMarkdown
                             className="text-left p-[15px] text-[17px] overflow-y-auto h-[100%] w-[100%]"
