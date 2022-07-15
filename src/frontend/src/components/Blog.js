@@ -10,9 +10,9 @@ export const Blog = ({blog})=>{
             </div>
             <div className="font-light text-[15px] text-center">
                 By {blog.author.firstName + " " + blog.author.lastName}<br/>
-                Created on {new Date(blog.creationTime).toDateString()}
+                {new Date(blog.creationTime).toDateString()}
             </div>
-            <ReactMarkdown className="text-[25px] text-start my-[10px] text-left w-[100%]">
+            <ReactMarkdown className="text-[20px] text-start my-[10px] text-left w-[100%]">
                 {blog.content}
             </ReactMarkdown>
         </Fade>

@@ -20,7 +20,7 @@ export const Navbar = ({changeTheme})=>{
 
     return (
         <div className="flex flex-row items-center shadow-[rgba(99,99,99,0.2)_0_2px_8px_0] bg-[#ede7f6]">
-            <Link to="/home" className="basis-[10%] font-bold m-[10px] text-[36px] font-serif">Bloggy</Link>
+            <Link to="/home" className="basis-[10%] font-bold m-[10px] text-[36px] font-serif decoration-0">Bloggy</Link>
             <div className="flex flex-auto flex-row mx-[10px]">
                 <NavbarItem to="/home" title="Home" icon={<Home/>} />
                 <NavbarItem to="/search" title="Search" icon={<Search/>} />

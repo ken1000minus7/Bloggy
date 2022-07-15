@@ -2,6 +2,7 @@ package com.ken.bloggy.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import org.hibernate.annotations.Type;
 
 import javax.persistence.*;
 
@@ -13,6 +14,10 @@ public class Blog {
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "blog_sequence")
     private long id;
     private String title;
+
+    @Lob
+    @Basic(fetch = FetchType.LAZY)
+    @Type(type = "org.hibernate.type.TextType")
     private String content;
 
     private long creationTime;
