@@ -53,7 +53,7 @@ export const HomePage = ()=>{
             </div>
             <div>
                 {
-                    latestBlogs && <BlogList blogList={latestBlogs} />
+                    latestBlogs && <BlogList blogList={latestBlogs.slice(0,Math.min(3,latestBlogs.length))} />
                 }
             </div>
         </div>
