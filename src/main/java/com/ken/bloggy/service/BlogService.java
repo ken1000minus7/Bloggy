@@ -39,6 +39,10 @@ public class BlogService {
         throw new IllegalArgumentException("Blog with id "+id+" does not exist.");
     }
 
+    public List<Blog> searchBlogs(String query){
+        return blogRepository.findAllByTitleContainingIgnoreCase(query);
+    }
+
     public void addBlog(Blog blog,String username){
         if(!userRepository.existsByUsername(username)){
             throw new IllegalArgumentException("User with username "+username+" does not exist");

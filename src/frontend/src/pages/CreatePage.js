@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-import {Button, InputLabel, Tab, Tabs, TextField} from "@mui/material";
+import {Button, Tab, Tabs, TextField} from "@mui/material";
 import ReactMarkdown from "react-markdown";
 import axios from "axios";
 import {useNavigate} from "react-router";

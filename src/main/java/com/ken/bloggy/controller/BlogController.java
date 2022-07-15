@@ -38,6 +38,11 @@ public class BlogController {
         }
     }
 
+    @GetMapping("/search/{query}")
+    public List<Blog> searchBlogs(@PathVariable String query){
+        return blogService.searchBlogs(query);
+    }
+
     @PostMapping("/user/{username}/blog")
     public ResponseEntity<?> addBlog(@RequestBody Blog blog, @PathVariable String username){
         try {

@@ -8,4 +8,6 @@ import java.util.List;
 public interface BlogRepository extends JpaRepository<Blog,Long> {
 
     public List<Blog> findAllByAuthorUsername(String username);
+
+    public List<Blog> findAllByTitleContainingIgnoreCase(String query);
 }

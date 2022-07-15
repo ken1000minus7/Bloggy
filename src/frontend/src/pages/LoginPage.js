@@ -123,7 +123,7 @@ export const LoginPage = ()=>{
 
     return (
         <div>
-            <div className="font-bold text-[45px] m-[20px] w-[100%] text-center">
+            <div className="font-bold text-[45px] m-[20px] text-center">
                 Begin your blogging journey with <span className="font-serif font-extrabold text-[50px]">Bloggy</span>
             </div>
             <div className="flex flex-row">

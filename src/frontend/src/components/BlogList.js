@@ -4,16 +4,14 @@ import {Fade} from "react-awesome-reveal";
 
 export const BlogList = ({blogList}) => {
     return (
-        <div>
+        <Fade cascade triggerOnce>
             {
                 blogList.map((blog)=>{
                     return (
-                        <Fade direction="up" triggerOnce>
-                            <BlogCard blog={blog} key={blog.id}/>
-                        </Fade>
+                        <BlogCard blog={blog} key={blog.id}/>
                     )
                 })
             }
-        </div>
+        </Fade>
     )
 }
