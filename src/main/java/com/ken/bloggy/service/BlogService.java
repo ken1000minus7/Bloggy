@@ -29,7 +29,7 @@ public class BlogService {
         if(!userRepository.existsByUsername(username)){
             throw new IllegalArgumentException("User with username "+username+" does not exist");
         }
-        return blogRepository.findAllByAuthorUsername(username);
+        return blogRepository.findAllByAuthorUsernameOrderByTitle(username);
     }
 
     public Blog getBlogById(long id){
