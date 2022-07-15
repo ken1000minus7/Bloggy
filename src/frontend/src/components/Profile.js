@@ -10,7 +10,7 @@ export const Profile = ({user}) => {
 
     let navigate = useNavigate()
 
-    const [blogList,setBlogList] = useState([])
+    const [blogList,setBlogList] = useState(null)
 
     useEffect(()=>{
         axios({
@@ -41,7 +41,7 @@ export const Profile = ({user}) => {
                     {(user.username===localStorage.getItem("username")) ? "Your" : `${user.firstName}'s`} blogs
                 </div>
                 {
-                    (blogList.length===0) ? (
+                    blogList && ((blogList.length===0) ? (
                         <div className="flex flex-col items-center">
                             <Lottie
                                 play
@@ -66,7 +66,7 @@ export const Profile = ({user}) => {
                         </div>
                     ) : (
                         <BlogList blogList={blogList}/>
-                    )
+                    ))
                 }
             </div>
         </div>

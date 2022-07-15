@@ -12,7 +12,7 @@ export const BlogCard = ({blog}) => {
                 {blog.content}
             </ReactMarkdown>
             <div className="flex flex-row bg-amber-100 p-[10px] group-hover:bg-white rounded-b-[20px]">
-                <span className="flex-auto">By {blog.author.firstName + " " + blog.author.lastName}</span>
+                <span className="flex-auto">By <Link to={`/user/${blog.author.username}`} className="hover:text-cyan-500 duration-[300ms]">{blog.author.firstName + " " + blog.author.lastName}</Link></span>
                 <span className="flex-auto text-right">{new Date(blog.creationTime).toDateString()}</span>
             </div>
         </Link>
