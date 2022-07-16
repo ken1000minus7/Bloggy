@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import {useNavigate} from "react-router";
 import typingAnimation from '../assets/typinganimation.json'
 import Lottie from "react-lottie-player";
@@ -16,6 +16,18 @@ export const LoginPage = ()=>{
     if(jwtToken!=null){
         navigate("/")
     }
+
+    const [width,setWidth] = useState(window.innerWidth)
+
+    useEffect(()=>{
+        const handleWidth = ()=>{
+            setWidth(window.innerWidth)
+        }
+        window.addEventListener("resize",handleWidth)
+        return ()=>{
+            window.removeEventListener("resize",handleWidth)
+        }
+    })
 
     const [value,setValue] = useState(0)
 
@@ -123,24 +135,24 @@ export const LoginPage = ()=>{
 
     return (
         <div>
-            <div className="font-bold text-[45px] m-[20px] text-center">
-                Begin your blogging journey with <span className="font-serif font-extrabold text-[50px]">Bloggy</span>
+            <div className="font-bold text-[45px] m-[20px] text-center md:text-[35px]">
+                Begin your blogging journey with <span className="font-serif font-extrabold text-[50px] md:text-[40px]">Bloggy</span>
             </div>
-            <div className="flex flex-row">
+            <div className="flex flex-row md:flex-col">
                 <Lottie
                     loop
                     animationData={typingAnimation}
                     play
                     className="basis-[50%]"
                 />
-                <div className="basis-[50%] mr-[30px] rounded-[10px] shadow-md">
+                <div className="basis-[50%] mr-[30px] rounded-[10px] shadow-md md:mx-[10px]">
                     <Tabs value={value} onChange={changeValue}>
                         <Tab label="Login"/>
                         <Tab label="Register" />
                     </Tabs>
                     {
                         (value===0) ? (
-                            <div className="flex flex-col w-[100%] h-[100%] place-content-evenly items-center pt-[2px]">
+                            <div className="flex flex-col w-[100%] h-[100%] justify-evenly items-center pt-[2px] md:pt-[10px]">
                                 <TextField
                                     label="Username"
                                     value={username}
@@ -174,15 +186,15 @@ export const LoginPage = ()=>{
 
                             </div>
                         ) : (
-                            <div className="flex flex-col w-[100%] h-[100%] place-content-evenly items-center ">
-                                <div className="flex flex-row w-[90%]">
+                            <div className="flex flex-col w-[100%] h-[100%] justify-evenly items-center md:pt-[10px]">
+                                <div className="flex flex-row w-[90%] md:flex-col">
                                     <TextField
                                         label="First Name"
                                         value={firstName}
                                         variant="outlined"
                                         onChange={changeFirstName}
                                         className="flex-1"
-                                        style={{marginRight : "10px"}}
+                                        style={{marginRight : width>760 ? "10px" : "0px"}}
                                     />
                                     <TextField
                                         label="Last Name"
@@ -190,7 +202,7 @@ export const LoginPage = ()=>{
                                         variant="outlined"
                                         onChange={changeLastName}
                                         className="flex-1"
-                                        style={{marginLeft : "10px"}}
+                                        style={{marginLeft : width>760 ? "10px" : "0px"}}
                                     />
                                 </div>
                                 <TextField
@@ -208,7 +220,7 @@ export const LoginPage = ()=>{
                                     className="w-[90%]"
                                     onChange={changeEmail}
                                 />
-                                <div className="flex flex-row w-[90%]">
+                                <div className="flex flex-row w-[90%] md:flex-col">
                                     <TextField
                                         label="Password"
                                         value={password}
@@ -216,7 +228,7 @@ export const LoginPage = ()=>{
                                         variant="outlined"
                                         onChange={changePassword}
                                         className="flex-1"
-                                        style={{marginRight : "10px"}}
+                                        style={{marginRight : width>760 ? "10px" : "0px"}}
                                     />
                                     <TextField
                                         label="Confirm Password"
@@ -225,10 +237,10 @@ export const LoginPage = ()=>{
                                         variant="outlined"
                                         onChange={changeConfirmPassword}
                                         className="flex-1"
-                                        style={{marginLeft : "10px"}}
+                                        style={{marginLeft : width>760 ? "10px" : "0px"}}
                                     />
                                 </div>
-                                <div className="flex flex-col mb-[55px] items-center">
+                                <div className="flex flex-col mb-[55px] items-center md:mb-[10px]">
                                     <div>
                                         Already have an account? <Button onClick={(event)=>{changeValue(event,0)}}>Login</Button>
                                     </div>

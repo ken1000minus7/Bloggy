@@ -30,10 +30,10 @@ export const SearchPage = ()=>{
 
     return (
         <div className="flex flex-col items-center">
-            <div className="font-bold text-[40px] my-[20px]">
+            <div className="font-bold text-[40px] my-[20px] text-center sm:text-[35px]">
                 Explore our collection of blogs
             </div>
-            <div className="flex flex-row items-center w-[50%]">
+            <div className="flex flex-row items-center w-[50%] sm:w-[90%]" >
                 <TextField
                     value={query}
                     onChange={changeQuery}

@@ -25,6 +25,18 @@ export const Navbar = ({changeTheme})=>{
         }
     },[])
 
+    const [width,setWidth] = useState(window.innerWidth)
+
+    useEffect(()=>{
+        const handleWidth = ()=>{
+            setWidth(window.innerWidth)
+        }
+        window.addEventListener("resize",handleWidth)
+        return ()=>{
+            window.removeEventListener("resize",handleWidth)
+        }
+    })
+
     const changeLogoutOpen = ()=>{
         setLogoutOpen(!logoutOpen)
     }
@@ -36,13 +48,15 @@ export const Navbar = ({changeTheme})=>{
 
     return (
         <div className="flex flex-row items-center shadow-[rgba(99,99,99,0.2)_0_2px_8px_0] bg-[#ede7f6]">
-            <Link to="/home" className="basis-[10%] font-bold m-[10px] text-[36px] font-serif decoration-0">Bloggy</Link>
-            <div className="flex flex-auto flex-row mx-[10px]">
-                <NavbarItem to="/home" title="Home" icon={<Home/>} />
-                <NavbarItem to="/search" title="Search" icon={<Search/>} />
-                <NavbarItem to={`/${username ? "create" : "login"}`} title="Create" icon={<Add/>}/>
+            <Link to="/home" className="basis-[10%] font-bold m-[10px] text-[36px] font-serif decoration-0 sm:m-[5px] sm:text-[25px] sm:basis-[2%]">
+                Bloggy
+            </Link>
+            <div className="flex flex-auto flex-row mx-[10px] sm:mx-0 sm:justify-evenly">
+                <NavbarItem to="/home" title="Home" icon={<Home fontSize={(width>830 || width<600 ? "medium" : "large")}/>} />
+                <NavbarItem to="/search" title="Search" icon={<Search fontSize={(width>830 || width<600 ? "medium" : "large")}/>} />
+                <NavbarItem to={`/${username ? "create" : "login"}`} title="Create" icon={<Add fontSize={(width>830 || width<600 ? "medium" : "large")}/>}/>
             </div>
-            <Switch onChange={changeTheme} className="m-[10px]"/>
+            <Switch onChange={changeTheme} className="m-[10px] sm:m-0"/>
             {
                 username ? (
                     <div>
@@ -59,10 +73,10 @@ export const Navbar = ({changeTheme})=>{
                                 }
                             }}
                         >
-                            <div className="text-[18px] mx-[5px]">
+                            <div className="text-[18px] mx-[5px] sm:hidden">
                                 {username}
                             </div>
-                            <Avatar className="mx-[5px]" />
+                            <Avatar className="mx-[5px] sm:mx-0" />
                         </Button>
                         <Menu
                             open={menuOpen}
@@ -85,7 +99,7 @@ export const Navbar = ({changeTheme})=>{
                         <LogoutDialog open={logoutOpen} setOpen={setLogoutOpen} />
                     </div>
                 ) : (
-                    <Link to={"/login"} className="font-bold text-[20px] my-[10px] mx-[20px] duration-[400ms] hover:opacity-[0.5]">
+                    <Link to={"/login"} className="font-bold text-[20px] my-[10px] mx-[20px] duration-[400ms] hover:opacity-[0.5] sm:mx-[5px] sm:text-[15px]">
                         Login
                     </Link>
                 )

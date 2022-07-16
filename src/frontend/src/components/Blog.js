@@ -6,7 +6,7 @@ import {Link} from "react-router-dom";
 export const Blog = ({blog})=>{
     return(
         <Fade triggerOnce cascade className="flex flex-col my-[10px] items-center">
-            <div className="font-serif font-bold text-[60px]">
+            <div className="font-serif font-bold text-[60px] text-center">
                 {blog.title}
             </div>
             <div className="font-light text-[15px] text-center mb-0">

@@ -19,10 +19,10 @@ export const HomePage = ()=>{
     },[])
     return(
         <div>
-            <div className="flex flex-row shadow-md">
+            <div className="flex flex-row shadow-md lg:flex-col-reverse lg:pb-[20px]">
                 <div className="basis-[50%] flex flex-col items-center justify-center">
                     <Fade cascade triggerOnce>
-                        <div className="font-extrabold text-[38px] ml-[30px] my-[20px]">
+                        <div className="font-extrabold text-[38px] ml-[30px] my-[20px] sm:mx-[20px] sm:text-[32px] sm:text-center">
                             Bring your imagination to life with the world's smallest blogging community
                         </div>
                         <Button

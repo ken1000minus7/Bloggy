@@ -53,15 +53,15 @@ export const CreatePage = ()=>{
 
     return (
         <div>
-            <div className="flex flex-row items-center justify-center">
-                <div className="text-[45px] font-bold my-[20px]">
+            <div className="flex flex-row items-center justify-center md:flex-col md:mx-[10px]">
+                <div className="text-[45px] font-bold my-[20px] md:text-center sm:text-[35px]">
                     Pour your creativity into words
                 </div>
                 <Lottie
                     play
                     loop
                     animationData={writerAnimation}
-                    className="h-[80px]"
+                    className="h-[80px] md:h-[150px] sm:h-[120px]"
                     />
             </div>
             <div className="mx-[20px] my-[10px]">
