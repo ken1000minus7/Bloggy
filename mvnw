@@ -34,7 +34,6 @@
 #   MAVEN_SKIP_RC - flag to disable loading of mavenrc files
 # ----------------------------------------------------------------------------
 
-set JAVA_HOME=C:\path\to\jdk11
 
 if [ -z "$MAVEN_SKIP_RC" ] ; then
 
