@@ -84,4 +84,13 @@
     white-space: pre;
     margin: 1em 0;
   }
+
+  blockquote {
+    display: block;
+    margin: 1em 40px;
+  }
+
+  u {
+    text-decoration: underline;
+  }
 }
