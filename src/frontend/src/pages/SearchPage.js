@@ -1,8 +1,7 @@
 import React, {useEffect, useState} from "react";
-import {IconButton, TextField} from "@mui/material";
+import {TextField} from "@mui/material";
 import axios from "axios";
 import {BlogList} from "../components/BlogList";
-import {Search} from "@mui/icons-material";
 import searchAnim from '../assets/search.json'
 import notFoundAnim from '../assets/notfound.json'
 import Lottie from "react-lottie-player";

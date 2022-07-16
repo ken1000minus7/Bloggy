@@ -37,10 +37,6 @@ export const Navbar = ({changeTheme})=>{
         }
     })
 
-    const changeLogoutOpen = ()=>{
-        setLogoutOpen(!logoutOpen)
-    }
-
     const changeMenuOpen = (event)=>{
         setAnchor(event.currentTarget)
         setMenuOpen(!menuOpen)
