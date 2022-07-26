@@ -5,6 +5,11 @@ import axios from "axios";
 import {useNavigate} from "react-router";
 import Lottie from "react-lottie-player";
 import writerAnimation from '../assets/writer.json'
+import remarkGfm from "remark-gfm";
+import remarkMath from "remark-math";
+import rehypeKatex from "rehype-katex";
+import 'katex/dist/katex.min.css'
+import rehypeRaw from "rehype-raw";
 
 export const CreatePage = ()=>{
     let navigate = useNavigate()
@@ -91,7 +96,9 @@ export const CreatePage = ()=>{
                         />
                     ) : (
                         <ReactMarkdown
-                            className="text-left p-[15px] text-[17px] overflow-y-auto h-[100%] w-[100%]"
+                            className="blog text-left p-[15px] text-[17px] overflow-y-auto h-[100%] w-[100%]"
+                            remarkPlugins={[[remarkGfm,{singleTilde: false}],remarkMath]}
+                            rehypePlugins={[rehypeKatex,rehypeRaw]}
                         >
                             {content}
                         </ReactMarkdown>
