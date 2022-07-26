@@ -1,12 +1,7 @@
 import React from "react";
 import {Fade} from "react-awesome-reveal";
-import ReactMarkdown from "react-markdown";
 import {Link} from "react-router-dom";
-import remarkGfm from "remark-gfm";
-import remarkMath from "remark-math";
-import rehypeKatex from "rehype-katex";
-import 'katex/dist/katex.min.css'
-import rehypeRaw from "rehype-raw";
+import {MarkdownText} from "./MarkdownText";
 
 export const Blog = ({blog})=>{
     return(
@@ -18,13 +13,11 @@ export const Blog = ({blog})=>{
                 By <Link to={`/user/${blog.author.username}`} className="hover:text-cyan-500 duration-[300ms]">{blog.author.firstName + " " + blog.author.lastName}</Link><br/>
                 {new Date(blog.creationTime).toDateString()}
             </div>
-            <ReactMarkdown
+            <MarkdownText
                 className="text-[18px] text-start my-[10px] text-left w-[100%] px-[20px]"
-                remarkPlugins={[[remarkGfm,{singleTilde: false}],remarkMath]}
-                rehypePlugins={[rehypeKatex,rehypeRaw]}
             >
                 {blog.content}
-            </ReactMarkdown>
+            </MarkdownText>
         </Fade>
     )
 }

@@ -1,15 +1,10 @@
 import React, {useState} from "react";
 import {Button, Tab, Tabs, TextField} from "@mui/material";
-import ReactMarkdown from "react-markdown";
 import axios from "axios";
 import {useNavigate} from "react-router";
 import Lottie from "react-lottie-player";
 import writerAnimation from '../assets/writer.json'
-import remarkGfm from "remark-gfm";
-import remarkMath from "remark-math";
-import rehypeKatex from "rehype-katex";
-import 'katex/dist/katex.min.css'
-import rehypeRaw from "rehype-raw";
+import {MarkdownText} from "../components/MarkdownText";
 
 export const CreatePage = ()=>{
     let navigate = useNavigate()
@@ -95,13 +90,11 @@ export const CreatePage = ()=>{
                             placeholder="Your blog"
                         />
                     ) : (
-                        <ReactMarkdown
+                        <MarkdownText
                             className="blog text-left p-[15px] text-[17px] overflow-y-auto h-[100%] w-[100%]"
-                            remarkPlugins={[[remarkGfm,{singleTilde: false}],remarkMath]}
-                            rehypePlugins={[rehypeKatex,rehypeRaw]}
                         >
                             {content}
-                        </ReactMarkdown>
+                        </MarkdownText>
                     )
                 }
             </div>
