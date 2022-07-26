@@ -4,19 +4,23 @@ import axios from "axios";
 import {BlogList} from "../components/BlogList";
 import searchAnim from '../assets/search.json'
 import notFoundAnim from '../assets/notfound.json'
+import searchingAnim from '../assets/searchanimation.json'
 import Lottie from "react-lottie-player";
 
 export const SearchPage = ()=>{
     const [query,setQuery] = useState("")
+    const [searching,setSearching] = useState(false)
     const [resultList,setResultList] = useState([])
 
     const getResult = ()=>{
+        setSearching(true)
         axios({
             method : "GET",
             url : `${process.env.REACT_APP_API_BASE_URL}/search/${query}`
         })
             .then(response=> setResultList(response.data))
             .catch(error=> console.log(error))
+            .finally(()=> setSearching(false))
     }
 
     useEffect(()=>{
@@ -55,6 +59,18 @@ export const SearchPage = ()=>{
                             Begin searching
                         </div>
                     </div>
+                ) : (searching ? (
+                    <div className="flex flex-col basis-1 h-[100%] w-[100%] items-center justify-center mt-[50px]">
+                        <Lottie
+                            play
+                            loop
+                            animationData={searchingAnim}
+                            className="h-[250px]"
+                        />
+                        <div className="font-bold text-[30px]">
+                            Searching..
+                        </div>
+                    </div>
                 ) : ((resultList.length===0) ? (
                     <div className="flex flex-col basis-1 h-[100%] w-[100%] items-center justify-center mt-[50px]">
                         <Lottie
@@ -71,7 +87,7 @@ export const SearchPage = ()=>{
                     <div className="flex-auto w-[100%]">
                         <BlogList blogList={resultList} />
                     </div>
-                ))
+                )))
             }
         </div>
     )
