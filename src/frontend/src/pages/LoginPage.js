@@ -135,8 +135,8 @@ export const LoginPage = ()=>{
 
     return (
         <div>
-            <div className="font-bold text-[45px] m-[20px] text-center md:text-[35px]">
-                Begin your blogging journey with <span className="font-serif font-extrabold text-[50px] md:text-[40px]">Bloggy</span>
+            <div className="font-bold text-[45px] m-[20px] text-center md:text-[30px] md:mx-[10px]">
+                Begin your blogging journey with <span className="font-serif font-extrabold text-[50px] md:text-[35px]">Bloggy</span>
             </div>
             <div className="flex flex-row md:flex-col">
                 <Lottie
@@ -186,8 +186,8 @@ export const LoginPage = ()=>{
 
                             </div>
                         ) : (
-                            <div className="flex flex-col w-[100%] h-[100%] justify-evenly items-center md:pt-[10px]">
-                                <div className="flex flex-row w-[90%] md:flex-col">
+                            <div className="flex flex-col w-[100%] h-[100%] justify-evenly items-center md:pt-[10px] md:my-[5px]">
+                                <div className="flex flex-row w-[90%] md:flex-col s">
                                     <TextField
                                         label="First Name"
                                         value={firstName}
@@ -237,7 +237,7 @@ export const LoginPage = ()=>{
                                         variant="outlined"
                                         onChange={changeConfirmPassword}
                                         className="flex-1"
-                                        style={{marginLeft : width>760 ? "10px" : "0px"}}
+                                        style={{ marginLeft : width>760 ? "10px" : "0px"}}
                                     />
                                 </div>
                                 <div className="flex flex-col mb-[55px] items-center md:mb-[10px]">

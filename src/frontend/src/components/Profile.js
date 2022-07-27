@@ -21,23 +21,23 @@ export const Profile = ({user}) => {
             .catch(error=>{
                 console.log(error)
             })
-    })
+    },[])
 
     return (
         <div>
             <div className="flex flex-row p-[20px] shadow-md sm:flex-col sm:items-center">
                 <img alt="Profile" src="https://www.business2community.com/wp-content/uploads/2017/08/blank-profile-picture-973460_640.png" className="rounded-[50%] h-[200px] sm:h-[150px]"/>
                 <div className="flex flex-col justify-center basis-[100%] mx-[20px] sm:items-center">
-                    <div className="font-bold text-[50px] sm:text-center sm:text-[45px]">
+                    <div className="font-bold text-[50px] sm:text-center sm:text-[40px]">
                         {user.firstName + " " + user.lastName}
                     </div>
-                    <div className="text-[35px] sm:text-center sm:text-[30px]">
+                    <div className="text-[35px] sm:text-center sm:text-[25px]">
                         {user.username}
                     </div>
                 </div>
             </div>
             <div>
-                <div className="mx-[20px] font-bold text-[30px] mt-[20px]">
+                <div className="mx-[20px] font-bold text-[30px] mt-[20px] sm:text-[20px]">
                     {(user.username===localStorage.getItem("username")) ? "Your" : `${user.firstName}'s`} blogs
                 </div>
                 {
