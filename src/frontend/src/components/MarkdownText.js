@@ -8,6 +8,7 @@ import rangeParser from 'parse-numeric-range'
 import 'katex/dist/katex.min.css'
 import {SyntaxHighlighter} from "./SyntaxHighlighter";
 import materialDark from "react-syntax-highlighter/dist/cjs/styles/prism/material-dark";
+import materialLight from "react-syntax-highlighter/dist/cjs/styles/prism/material-light";
 
 export const MarkdownText = ({children, className = ""}) => {
 

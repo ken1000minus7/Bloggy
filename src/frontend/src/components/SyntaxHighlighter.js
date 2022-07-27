@@ -11,6 +11,12 @@ import java from "react-syntax-highlighter/dist/cjs/languages/prism/java";
 import cpp from "react-syntax-highlighter/dist/cjs/languages/prism/cpp";
 import kotlin from "react-syntax-highlighter/dist/cjs/languages/prism/kotlin";
 import csharp from "react-syntax-highlighter/dist/cjs/languages/prism/csharp";
+import python from "react-syntax-highlighter/dist/cjs/languages/prism/python";
+import dart from "react-syntax-highlighter/dist/cjs/languages/prism/dart";
+import latex from "react-syntax-highlighter/dist/cjs/languages/prism/latex";
+import sql from "react-syntax-highlighter/dist/cjs/languages/prism/sql";
+import powershell from "react-syntax-highlighter/dist/cjs/languages/prism/powershell";
+import swift from "react-syntax-highlighter/dist/cjs/languages/prism/swift";
 
 PrismLight.registerLanguage('tsx', tsx)
 PrismLight.registerLanguage('typescript', typescript)
@@ -22,6 +28,12 @@ PrismLight.registerLanguage('java',java)
 PrismLight.registerLanguage('cpp',cpp)
 PrismLight.registerLanguage('kotlin',kotlin)
 PrismLight.registerLanguage('csharp',csharp)
+PrismLight.registerLanguage('python',python)
+PrismLight.registerLanguage('dart',dart)
+PrismLight.registerLanguage('latex',latex)
+PrismLight.registerLanguage('sql',sql)
+PrismLight.registerLanguage('powershell',powershell)
+PrismLight.registerLanguage('swift',swift)
 
 export const SyntaxHighlighter = ({...props}) => {
     return (

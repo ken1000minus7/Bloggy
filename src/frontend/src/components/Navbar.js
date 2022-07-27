@@ -5,6 +5,7 @@ import {NavbarItem} from "./NavbarItem";
 import {AccountBox, Add, Home, Logout, Search} from "@mui/icons-material";
 import {useNavigate} from "react-router";
 import {LogoutDialog} from "./LogoutDialog";
+import logo from '../assets/logo.png'
 
 export const Navbar = ({changeTheme})=>{
     let navigate = useNavigate()
@@ -44,8 +45,16 @@ export const Navbar = ({changeTheme})=>{
 
     return (
         <div className="flex flex-row items-center shadow-[rgba(99,99,99,0.2)_0_2px_8px_0] bg-[#ede7f6]">
-            <Link to="/home" className="basis-[10%] font-bold m-[10px] text-[36px] font-serif decoration-0 sm:m-[5px] sm:text-[25px] sm:basis-[2%]">
-                Bloggy
+            <Link to="/home" className="font-bold m-[10px] text-[36px] font-serif sm:m-[5px] sm:text-[25px] flex flex-row items-center">
+                <img src={logo}  alt={"Bloggy"} className="h-[38px] sm:h-[30px]"/>
+                {
+                    width >640 && (
+                        <div className="ml-[5px]">
+                            Bloggy
+                        </div>
+                    )
+                }
+
             </Link>
             <div className="flex flex-auto flex-row mx-[10px] sm:mx-0 sm:justify-evenly">
                 <NavbarItem to="/home" title="Home" icon={<Home fontSize={(width>830 || width<600 ? "medium" : "large")}/>} />

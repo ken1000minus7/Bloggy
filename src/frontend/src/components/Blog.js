@@ -6,7 +6,7 @@ import {MarkdownText} from "./MarkdownText";
 export const Blog = ({blog})=>{
     return(
         <Fade triggerOnce cascade className="blog flex flex-col my-[10px] items-center">
-            <div className="font-serif font-bold text-[60px] text-center">
+            <div className="font-serif font-bold text-[60px] text-center md:text-[50px]">
                 {blog.title}
             </div>
             <div className="font-light text-[15px] text-center mb-0">
@@ -14,7 +14,7 @@ export const Blog = ({blog})=>{
                 {new Date(blog.creationTime).toDateString()}
             </div>
             <MarkdownText
-                className="text-[18px] text-start my-[10px] text-left w-[100%] px-[20px]"
+                className="text-[18px] text-start my-[10px] text-left w-[100%] px-[20px] md:text-[15px]"
             >
                 {blog.content}
             </MarkdownText>
