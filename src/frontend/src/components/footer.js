@@ -34,16 +34,16 @@ const Footer = () => {
       </Link>
     </div>
   </div>
-  <div className="mx-6 py-10 text-center md:text-left">
+  <div className="mx-3 py-2 text-center md:text-left">
     <div className="grid grid-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
       <div className="">
-        <p className="mb-4">
+        <p className="mb-2">
           <Link to="/home" className="text-gray-600">Home</Link>
         </p>
-        <p className="mb-4">
+        <p className="mb-2">
           <Link to="/search" className="text-gray-600">Search</Link>
         </p>
-        <p className="mb-4">
+        <p className="mb-2">
           <Link to="/create" className="text-gray-600">Create a Blog</Link>
         </p>
         <p>
