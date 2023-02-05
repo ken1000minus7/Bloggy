@@ -8,6 +8,8 @@ import {LoginPage} from "./pages/LoginPage";
 import {ProfilePage} from "./pages/ProfilePage";
 import {CreatePage} from "./pages/CreatePage";
 import {SearchPage} from "./pages/SearchPage";
+import Footer from "./components/Footer";
+
 
 function App() {
     if(localStorage.getItem("theme")==null)
@@ -39,6 +41,7 @@ function App() {
                 <Route exact path="/search" element={<SearchPage />} />
                 <Route exact path="*" element={<NotFound />} />
             </Routes>
+            <Footer/>
         </div>
     );
 }

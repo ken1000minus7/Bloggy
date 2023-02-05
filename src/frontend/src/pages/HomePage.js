@@ -6,7 +6,6 @@ import workingAnimation from '../assets/womenworking.json'
 import {Button} from "@mui/material";
 import {useNavigate} from "react-router";
 import {Fade} from "react-awesome-reveal";
-import Footer from "../components/footer";
 
 export const HomePage = ()=>{
     let navigate = useNavigate()
@@ -57,7 +56,6 @@ export const HomePage = ()=>{
                     latestBlogs && <BlogList blogList={latestBlogs.slice(0,Math.min(3,latestBlogs.length))} />
                 }
             </div>
-            <Footer/>
         </div>
     )
 }
