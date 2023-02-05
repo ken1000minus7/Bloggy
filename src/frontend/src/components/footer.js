@@ -38,16 +38,16 @@ const Footer = () => {
     <div className="grid grid-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
       <div className="">
         <p className="mb-2">
-          <Link to="/home" className="text-gray-600">Home</Link>
+          <Link to="/home" className="text-gray-600 hover:underline">Home</Link>
         </p>
         <p className="mb-2">
-          <Link to="/search" className="text-gray-600">Search</Link>
+          <Link to="/search" className="text-gray-600 hover:underline">Search</Link>
         </p>
         <p className="mb-2">
-          <Link to="/create" className="text-gray-600">Create a Blog</Link>
+          <Link to="/create" className="text-gray-600 hover:underline">Create a Blog</Link>
         </p>
         <p>
-          <Link to="/login" className="text-gray-600">Login</Link>
+          <Link to="/login" className="text-gray-600 hover:underline">Login</Link>
         </p>
       </div>
     </div>
