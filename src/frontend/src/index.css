@@ -2,6 +2,16 @@
 @tailwind components;
 @tailwind utilities;
 
+@font-face {
+    font-family: "Itim";
+    src: url("../src/assets/Itim-Regular.ttf");
+}
+
+@font-face {
+    font-family: "SourceSansPro";
+    src: url("../src/assets/SourceSansPro-Regular.ttf");
+}
+
 @layer components {
     h1 {
         display: block;
