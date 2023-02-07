@@ -3,15 +3,31 @@ import { Fade } from "react-awesome-reveal";
 import { Link } from "react-router-dom";
 import { MarkdownText } from "./MarkdownText";
 import { useNavigate } from "react-router";
+import axios from "axios";
 
 export const Blog = ({ blog }) => {
     let navigate = useNavigate()
     const username = localStorage.getItem("username") || ""
 
     const handleDelete = () => {
-        console.log("deleted??")
-        // TODO: call to delete from back
-        navigate(`/home`)
+        axios({
+            url: `${process.env.REACT_APP_API_BASE_URL}/blog/${blog.id}`,
+            method: "DELETE",
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": `Bearer ${localStorage.getItem("jwtToken")}`
+            },
+            data: {
+                "id": blog.id
+            }
+        })
+            .then(response => {
+                navigate(`/home`)
+            })
+            .catch(error => {
+                console.log(error)
+                alert(error.response.data)
+            })
     }
 
   return (
