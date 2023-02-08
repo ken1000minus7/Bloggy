@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router";
 import { Button, Dialog, DialogContent } from "@mui/material";
-import deleteAnim from '../assets/logout.json'    // add a trash can or smth
+import deleteAnim from '../assets/delete.json'
 import Lottie from "react-lottie-player";
 import axios from "axios";
 
