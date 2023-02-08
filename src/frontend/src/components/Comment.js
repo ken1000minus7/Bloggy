@@ -4,7 +4,7 @@ const Comment = ({comment}) => {
     let {authorUsername,title,content,timestamp}=comment;
     return (
         <>
-<div className="bg-gray-100">
+
   <div className="px-5">
     <div className="bg-[#ede7f6] max-w-xl rounded-2xl px-10 py-8 shadow-lg hover:shadow-2xl transition duration-500">
       <div className="mt-4">
@@ -18,7 +18,7 @@ const Comment = ({comment}) => {
       </div>
     </div>
   </div>
-</div>
+
         </>
     )
 }
