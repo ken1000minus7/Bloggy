@@ -135,8 +135,8 @@ export const LoginPage = ()=>{
 
     return (
         <div>
-            <div className="font-bold text-[45px] m-[20px] text-center md:text-[30px] md:mx-[10px]">
-                Begin your blogging journey with <span className="font-serif font-extrabold text-[50px] md:text-[35px]">Bloggy</span>
+            <div className="font-bold font-SourceSansPro text-[45px] m-[20px] text-center md:text-[30px] md:mx-[10px]">
+                Begin your blogging journey with <span className="font-itim font-extrabold text-[50px] md:text-[35px]">Bloggy</span>
             </div>
             <div className="flex flex-row md:flex-col">
                 <Lottie
@@ -240,7 +240,7 @@ export const LoginPage = ()=>{
                                         style={{ marginLeft : width>760 ? "10px" : "0px"}}
                                     />
                                 </div>
-                                <div className="flex flex-col mb-[55px] items-center md:mb-[10px]">
+                                <div className="flex font-SourceSansPro flex-col mb-[55px] items-center md:mb-[10px]">
                                     <div>
                                         Already have an account? <Button onClick={(event)=>{changeValue(event,0)}}>Login</Button>
                                     </div>

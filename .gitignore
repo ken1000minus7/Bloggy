@@ -20,6 +20,9 @@ target/
 *.ipr
 
 ### NetBeans ###
+/src/frontend/.yarn
+/src/frontend/yarn.lock
+/src/frontend/.yarnrc.yml
 /nbproject/private/
 /nbbuild/
 /dist/

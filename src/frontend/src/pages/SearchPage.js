@@ -33,7 +33,7 @@ export const SearchPage = ()=>{
 
     return (
         <div className="flex flex-col items-center">
-            <div className="font-bold text-[40px] my-[20px] text-center sm:text-[30px] sm:mx-[10px]">
+            <div className="font-bold font-SourceSansPro text-[40px] my-[20px] text-center sm:text-[30px] sm:mx-[10px]">
                 Explore our collection of blogs
             </div>
             <div className="flex flex-row items-center w-[50%] sm:w-[90%]" >
@@ -55,7 +55,7 @@ export const SearchPage = ()=>{
                             animationData={searchAnim}
                             className="h-[250px] sm:h-[200px]"
                             />
-                        <div className="font-bold text-[30px] sm:text-[20px]">
+                        <div className="font-bold font-SourceSansPro text-[30px] sm:text-[20px]">
                             Begin searching
                         </div>
                     </div>
@@ -67,7 +67,7 @@ export const SearchPage = ()=>{
                             animationData={searchingAnim}
                             className="h-[250px] sm:h-[200px]"
                         />
-                        <div className="font-bold text-[30px] sm:text-[20px]">
+                        <div className="font-bold font-SourceSansPro text-[30px] sm:text-[20px]">
                             Searching..
                         </div>
                     </div>
@@ -79,7 +79,7 @@ export const SearchPage = ()=>{
                             animationData={notFoundAnim}
                             className="h-[300px] sm:h-[250px]"
                         />
-                        <div className="font-bold text-[30px] sm:text-[20px]">
+                        <div className="font-bold font-SourceSansPro text-[30px] sm:text-[20px]">
                             No result found
                         </div>
                     </div>

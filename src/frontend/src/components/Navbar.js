@@ -49,7 +49,7 @@ export const Navbar = ({changeTheme})=>{
                 <img src={logo}  alt={"Bloggy"} className="h-[38px] sm:h-[30px]"/>
                 {
                     width >640 && (
-                        <div className="ml-[5px]">
+                        <div className="ml-[5px] font-itim">
                             Bloggy
                         </div>
                     )
@@ -92,19 +92,19 @@ export const Navbar = ({changeTheme})=>{
                                 setMenuOpen(false)
                                 navigate(`/user/${username}`)
                             }}>
-                                <AccountBox className="mr-[10px]"/> Profile
+                                <AccountBox className="mr-[10px] font-SourceSansPro"/> Profile
                             </MenuItem>
                             <MenuItem onClick={()=>{
                                 setMenuOpen(false)
                                 setLogoutOpen(true)
                             }}>
-                                <Logout className="mr-[10px]"/> Logout
+                                <Logout className="mr-[10px] font-SourceSansPro"/> Logout
                             </MenuItem>
                         </Menu>
                         <LogoutDialog open={logoutOpen} setOpen={setLogoutOpen} />
                     </div>
                 ) : (
-                    <Link to={"/login"} className="font-bold text-[20px] my-[10px] mx-[20px] duration-[400ms] hover:opacity-[0.5] sm:mx-[5px] sm:text-[15px]">
+                    <Link to={"/login"} className="font-bold text-[20px] my-[10px] mx-[20px] duration-[400ms] hover:opacity-[0.5] sm:mx-[5px] sm:text-[15px] font-SourceSansPro">
                         Login
                     </Link>
                 )

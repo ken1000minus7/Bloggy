@@ -15,7 +15,7 @@ const Footer = () => {
                 <img src={logo}  alt={"Bloggy"} className="h-[50px] sm:h-[33px] mt-auto"/>
                 {
                     width >640 && (
-                        <div className="ml-[5px] mt-auto">
+                        <div className="ml-[5px] mt-auto font-SourceSansPro">
                             Bloggy
                         </div>
                     )
@@ -58,23 +58,23 @@ const Footer = () => {
     <div className="text-center gap-0">
       <div className="">
         <p className="mb-1">
-          <Link to="/home" className="font-serif font-bold hover:underline">Home</Link>
+          <Link to="/home" className="font-SourceSansPro font-bold hover:underline">Home</Link>
         </p>
         <p className="mb-1">
-          <Link to="/search" className="font-serif font-bold hover:underline">Search</Link>
+          <Link to="/search" className="font-SourceSansPro font-bold hover:underline">Search</Link>
         </p>
         <p className="mb-1">
-          <Link to="/create" className="font-serif font-bold hover:underline">Create a Blog</Link>
+          <Link to="/create" className="font-SourceSansPro font-bold hover:underline">Create a Blog</Link>
         </p>
         <p>
-          <Link to="/login" className="font-serif font-bold hover:underline">Login</Link>
+          <Link to="/login" className="font-SourceSansPro font-bold hover:underline">Login</Link>
         </p>
       </div>
     </div>
   </div>
-  <div className="text-center p-6 bg-[#f0def4]">
+  <div className="text-center font-SourceSansPro p-6 bg-[#f0def4]">
     <span>© 2023 Copyright:</span>
-    <Link className="font-serif font-semibold" to="/">Bloggy</Link>
+    <Link className="font-itim font-semibold" to="/">Bloggy</Link>
   </div>
 </footer>
   )
