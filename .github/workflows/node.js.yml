@@ -3,6 +3,9 @@
 
 name: Frontend
 
+env:
+  CI: false
+
 on:
   push:
     branches: [ "master" ]
