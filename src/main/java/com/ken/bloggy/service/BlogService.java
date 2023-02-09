@@ -52,8 +52,13 @@ public class BlogService {
         blogRepository.save(blog);
     }
 
-    public void updateBlog(Blog blog){
+    public void updateBlog(Blog blog, long id){
+        if(!blogRepository.existsById(id)){
+            throw new IllegalArgumentException("Blog does not exist");
+        }
+        else{
         blogRepository.save(blog);
+        }
     }
 
     public void deleteBlog(long id){

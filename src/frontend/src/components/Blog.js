@@ -10,7 +10,6 @@ export const Blog = ({ blog }) => {
     const [deleteOpen, setDeleteOpen] = useState(false)
 
 
-
   return (
     <Fade triggerOnce cascade className="blog flex flex-col my-[10px] items-center">
       <div className="flex ">
@@ -70,6 +69,7 @@ export const Blog = ({ blog }) => {
                     </svg>
                 </button>
                 <DeleteDialog open={deleteOpen} setOpen={setDeleteOpen} id={blog.id} />
+                <button onClick={navigate('/update')}>Update The Blog</button>
             </div> ) : ( <></> )
       }
     </Fade>
