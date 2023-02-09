@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from "react";
 import {Link} from "react-router-dom";
-import {Avatar, Button, Menu, MenuItem, Switch} from "@mui/material";
+import {Avatar, Button, Menu, MenuItem} from "@mui/material";
 import {NavbarItem} from "./NavbarItem";
 import {AccountBox, Add, Home, Logout, Search} from "@mui/icons-material";
 import {useNavigate} from "react-router";
@@ -44,12 +44,12 @@ export const Navbar = ({changeTheme})=>{
     }
 
     return (
-        <div className="flex flex-row items-center shadow-[rgba(99,99,99,0.2)_0_2px_8px_0] bg-[#ede7f6]">
+        <div className="Navbar flex flex-row items-center shadow-[rgba(99,99,99,0.2)_0_2px_8px_0] bg-[#ede7f6]">
             <Link to="/home" className="font-bold m-[10px] text-[36px] font-serif sm:m-[5px] sm:text-[25px] flex flex-row items-center">
                 <img src={logo}  alt={"Bloggy"} className="h-[38px] sm:h-[30px]"/>
                 {
                     width >640 && (
-                        <div className="ml-[5px] font-itim">
+                        <div className="ml-[5px] font-itim NavbarItemText">
                             Bloggy
                         </div>
                     )
@@ -61,7 +61,6 @@ export const Navbar = ({changeTheme})=>{
                 <NavbarItem to="/search" title="Search" icon={<Search fontSize={(width>830 || width<600 ? "medium" : "large")}/>} />
                 <NavbarItem to={`/${username ? "create" : "login"}`} title="Create" icon={<Add fontSize={(width>830 || width<600 ? "medium" : "large")}/>}/>
             </div>
-            <Switch onChange={changeTheme} className="m-[10px] sm:m-0"/>
             {
                 username ? (
                     <div>
@@ -104,7 +103,7 @@ export const Navbar = ({changeTheme})=>{
                         <LogoutDialog open={logoutOpen} setOpen={setLogoutOpen} />
                     </div>
                 ) : (
-                    <Link to={"/login"} className="font-bold text-[20px] my-[10px] mx-[20px] duration-[400ms] hover:opacity-[0.5] sm:mx-[5px] sm:text-[15px] font-SourceSansPro">
+                    <Link to={"/login"} className="font-bold loginButton NavbarItemText text-[20px] my-[10px] mx-[20px] duration-[400ms] hover:opacity-[0.5] sm:mx-[5px] sm:text-[15px] font-SourceSansPro">
                         Login
                     </Link>
                 )

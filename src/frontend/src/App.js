@@ -8,29 +8,39 @@ import {LoginPage} from "./pages/LoginPage";
 import {ProfilePage} from "./pages/ProfilePage";
 import {CreatePage} from "./pages/CreatePage";
 import {SearchPage} from "./pages/SearchPage";
-import Footer from "./components/Footer";
+import Footer from "./components/footer";
+import { Switch } from "@mui/material";
+import { createContext, useState } from "react";
+export const ThemeContext = createContext(null);
+
 
 
 function App() {
-    if(localStorage.getItem("theme")==null)
-        localStorage.setItem("theme","light")
+    // if(localStorage.getItem("theme")==null)
+    //     localStorage.setItem("theme","light")
 
-    const changeTheme = (event)=>{
-        let theme = localStorage.getItem("theme")
-        if((theme==="dark")!==event.target.checked){
-            if(theme==="dark"){
-                theme = "light"
-            }
-            else{
-                theme = "dark"
-            }
-            localStorage.setItem("theme",theme)
-        }
-        console.log(localStorage.getItem("theme"))
-    }
+    // const changeTheme = (event)=>{
+    //     let theme = localStorage.getItem("theme")
+    //     if((theme==="dark")!==event.target.checked){
+    //         if(theme==="dark"){
+    //             theme = "light"
+    //         }
+    //         else{
+    //             theme = "dark"
+    //         }
+    //         localStorage.setItem("theme",theme)
+    //     }
+    //     console.log(localStorage.getItem("theme"))
+    const [theme, setTheme] = useState("light");
+    const toggleTheme = () => {
+    setTheme((curr) => (curr === "light" ? "dark" : "light"));
+        };
+    
     return (
-        <div className="App">
-            <Navbar changeTheme={changeTheme}/>
+        <ThemeContext.Provider value={{ theme, toggleTheme }}>
+        <div className="App" id={theme}>
+            <Navbar />
+            <Switch onChange={toggleTheme} checked={theme === "dark"} className="m-[10px] sm:m-0" />
             <Routes>
                 <Route index element={<HomePage />} />
                 <Route exact path="/home" element={<HomePage />} />
@@ -43,6 +53,7 @@ function App() {
             </Routes>
             <Footer/>
         </div>
+        </ThemeContext.Provider>
     );
 }
 

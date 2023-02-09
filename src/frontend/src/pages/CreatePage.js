@@ -64,7 +64,7 @@ export const CreatePage = ()=>{
 
     return (
         <div>
-            <div className="flex flex-row items-center justify-center md:flex-col md:mx-[10px]">
+            <div className="homeText flex flex-row items-center justify-center md:flex-col md:mx-[10px]">
                 <div className="text-[45px] font-bold my-[20px] md:text-center sm:text-[30px]">
                     Pour your creativity into words
                 </div>
@@ -75,7 +75,7 @@ export const CreatePage = ()=>{
                     className="h-[80px] md:h-[150px] sm:h-[100px]"
                     />
             </div>
-            <div className="mx-[20px] my-[10px] sm:mx-[10px]">
+            <div className=" mx-[20px] my-[10px] sm:mx-[10px]">
                 <TextField
                     variant="outlined"
                     value={title}

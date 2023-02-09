@@ -6,7 +6,7 @@ const Footer = () => {
    const [width,setWidth] = useState(window.innerWidth)
   return (
     
-<footer className="text-center lg:text-left bg-[#ede7f6] font-serif">
+<footer className="text-center footerText lg:text-left bg-[#ede7f6] font-serif">
 <div className="flow-root">  
     <div className="flex float-left lg:justify-between px-6 pt-6 pb-0 border-b border-gray-300 mt-auto pt-auto">
       {/* <img src={logo} alt={"Bloggy"} className="h-[38px] sm:h-[30px]"></img>
@@ -72,7 +72,7 @@ const Footer = () => {
       </div>
     </div>
   </div>
-  <div className="text-center font-SourceSansPro p-6 bg-[#f0def4]">
+  <div className="text-center footerText2 font-SourceSansPro p-6 bg-[#f0def4]">
     <span>© 2023 Copyright:</span>
     <Link className="font-itim font-semibold" to="/">Bloggy</Link>
   </div>
