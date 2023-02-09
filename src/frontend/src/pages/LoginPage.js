@@ -9,6 +9,8 @@ import {
     TextField
 } from "@mui/material";
 import axios from "axios";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 export const LoginPage = ()=>{
     let navigate = useNavigate()
@@ -71,10 +73,11 @@ export const LoginPage = ()=>{
     const changeEmail = (event)=>{
         setEmail(event.target.value)
     }
-
     const handleLogin = ()=>{
         if(username.length===0 || password.length===0){
-            alert("One or more fields are empty")
+            toast.error("One or more fields are empty", {
+                position: toast.POSITION.TOP_CENTER
+            });
             return
         }
         axios({
@@ -95,17 +98,23 @@ export const LoginPage = ()=>{
                 navigate("/")
             })
             .catch(error=>{
-                alert(error.response.data)
+                toast.error(error.response.data, {
+                    position: toast.POSITION.TOP_CENTER
+                });
             })
     }
 
     const handleRegister = ()=>{
         if(username.length===0 || password.length===0 || firstName.length===0 || lastName.length===0 || email.length===0){
-            alert("One or more fields are empty")
+            toast.error("One or more fields are empty", {
+                position: toast.POSITION.TOP_CENTER
+            });
             return
         }
         if(password!==confirmPassword){
-            alert("Confirm password does not match")
+            toast.error("Confirm password does not match", {
+                position: toast.POSITION.TOP_CENTER
+            });
             return
         }
         axios({
@@ -129,7 +138,9 @@ export const LoginPage = ()=>{
                 navigate("/")
             })
             .catch(error=>{
-                alert(error.response.data)
+                toast.error(error.response.data, {
+                    position: toast.POSITION.TOP_CENTER
+                });
             })
     }
 

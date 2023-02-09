@@ -3,6 +3,8 @@ import {useNavigate, useParams} from "react-router";
 import axios from "axios";
 import {Profile} from "../components/Profile";
 import {LoadingDialog} from "../components/LoadingDialog";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 export const ProfilePage = ()=>{
 
@@ -20,7 +22,9 @@ export const ProfilePage = ()=>{
             .then(response=> setUser(response.data))
             .catch(error=>{
                 console.log(error)
-                alert("User does not exist")
+                toast.error("User does not exist", {
+                    position: toast.POSITION.TOP_CENTER
+                });
                 navigate("/")
             })
             .finally(()=> setLoading(false))

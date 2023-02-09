@@ -9,7 +9,8 @@ import {ProfilePage} from "./pages/ProfilePage";
 import {CreatePage} from "./pages/CreatePage";
 import {SearchPage} from "./pages/SearchPage";
 import Footer from "./components/Footer";
-
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function App() {
     if(localStorage.getItem("theme")==null)
@@ -42,6 +43,7 @@ function App() {
                 <Route exact path="*" element={<NotFound />} />
             </Routes>
             <Footer/>
+            <ToastContainer/>
         </div>
     );
 }
