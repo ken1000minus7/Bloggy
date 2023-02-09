@@ -24,6 +24,7 @@
     "react-router-dom": "^6.3.0",
     "react-scripts": "5.0.1",
     "react-syntax-highlighter": "^15.5.0",
+    "react-toastify": "^9.1.1",
     "rehype-katex": "^6.0.2",
     "rehype-raw": "^6.1.1",
     "remark-gfm": "^3.0.1",

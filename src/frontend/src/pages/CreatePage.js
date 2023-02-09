@@ -5,6 +5,9 @@ import {useNavigate} from "react-router";
 import Lottie from "react-lottie-player";
 import writerAnimation from '../assets/writer.json'
 import {MarkdownText} from "../components/MarkdownText";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 
 export const CreatePage = ()=>{
     let navigate = useNavigate()
@@ -38,7 +41,9 @@ export const CreatePage = ()=>{
 
     const handleCreate = ()=>{
         if(title==="" || content===""){
-            alert("One or more fields are empty")
+                toast.error("One or more fields are empty", {
+                position: toast.POSITION.TOP_CENTER
+            });
             return
         }
         axios({
@@ -58,7 +63,9 @@ export const CreatePage = ()=>{
             })
             .catch(error=>{
                 console.log(error)
-                alert(error.response.data)
+                toast.error(error.response.data, {
+                    position: toast.POSITION.TOP_CENTER
+                });
             })
     }
 
