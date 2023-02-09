@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { MarkdownText } from "./MarkdownText";
 import { DeleteDialog } from "./DeleteDialog";
 
-export const Blog = ({ blog }) => {
+export const Blog = ({ blog,blogId }) => {
 
     const username = localStorage.getItem("username") || ""
     const [deleteOpen, setDeleteOpen] = useState(false)
@@ -71,7 +71,7 @@ export const Blog = ({ blog }) => {
                 <DeleteDialog open={deleteOpen} setOpen={setDeleteOpen} id={blog.id} />
                 <button onClick={()=>{
                    if(localStorage.getItem("username")){
-                                    navigate('/update')
+                                    navigate('/update/{blogId}')
                                 }
                                 else{
                                     navigate('/login')
