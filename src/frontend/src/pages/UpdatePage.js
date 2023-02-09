@@ -6,7 +6,7 @@ import {LoadingDialog} from "../components/LoadingDialog";
 
 export const BlogPage = ()=>{
 
-    const {blogid} = useParams()
+    
     const {id} = useParams()
     const [blog,setBlog] = useState(null)
     const [loading,setLoading] = useState(false)
@@ -56,7 +56,7 @@ export const BlogPage = ()=>{
             return
         }
         axios({
-            url : `${process.env.REACT_APP_API_BASE_URL}/blog/${blogid}`,
+            url : `${process.env.REACT_APP_API_BASE_URL}/blog/${id}`,
             method : "PUT",
             headers : {
                 "Content-Type" : "application/json",
