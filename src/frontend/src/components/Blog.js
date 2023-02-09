@@ -69,7 +69,14 @@ export const Blog = ({ blog }) => {
                     </svg>
                 </button>
                 <DeleteDialog open={deleteOpen} setOpen={setDeleteOpen} id={blog.id} />
-                <button onClick={navigate('/update')}>Update The Blog</button>
+                <button onClick={()=>{
+                   if(localStorage.getItem("username")){
+                                    navigate('/update')
+                                }
+                                else{
+                                    navigate('/login')
+                                }
+                }}>Update The Blog</button>
             </div> ) : ( <></> )
       }
     </Fade>
