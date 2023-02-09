@@ -73,7 +73,6 @@ export const LoginPage = ()=>{
     const changeEmail = (event)=>{
         setEmail(event.target.value)
     }
-
     const handleLogin = ()=>{
         if(username.length===0 || password.length===0){
             toast.error("One or more fields are empty", {
