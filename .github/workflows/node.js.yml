@@ -6,12 +6,8 @@ name: Node.js CI
 on:
   push:
     branches: [ "master" ]
-    paths:
-    - src/frontend/**
   pull_request:
     branches: [ "master" ]
-    paths:
-    - src/frontend/**
   workflow_dispatch:
 
 
@@ -31,13 +27,16 @@ jobs:
         uses: borales/actions-yarn@v4
         with:
           cmd: install # will run `yarn install` command
+          dir: src/frontend
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }} # if needed
       - name: Build production bundle
         uses: borales/actions-yarn@v4
         with:
           cmd: build:prod # will run `yarn build:prod` command
+          dir: src/frontend
       - name: Test the app
         uses: borales/actions-yarn@v4
         with:
           cmd: test # will run `yarn test` command
+          dir: src/frontend
