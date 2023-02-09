@@ -8,12 +8,18 @@ import {LoginPage} from "./pages/LoginPage";
 import {ProfilePage} from "./pages/ProfilePage";
 import {CreatePage} from "./pages/CreatePage";
 import {SearchPage} from "./pages/SearchPage";
+<<<<<<< HEAD
 import Footer from "./components/footer";
 import { Switch } from "@mui/material";
 import { createContext, useState } from "react";
 export const ThemeContext = createContext(null);
 
 
+=======
+import Footer from "./components/Footer";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+>>>>>>> 0e4db4609b5b994e912d40f97c04ced782ed0ec8
 
 function App() {
     // if(localStorage.getItem("theme")==null)
@@ -52,6 +58,7 @@ function App() {
                 <Route exact path="*" element={<NotFound />} />
             </Routes>
             <Footer/>
+            <ToastContainer/>
         </div>
         </ThemeContext.Provider>
     );
