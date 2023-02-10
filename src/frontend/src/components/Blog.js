@@ -3,13 +3,13 @@ import { Fade } from "react-awesome-reveal";
 import { Link } from "react-router-dom";
 import { MarkdownText } from "./MarkdownText";
 import { DeleteDialog } from "./DeleteDialog";
-
+import {useNavigate} from "react-router";
 export const Blog = ({ blog}) => {
 
     const username = localStorage.getItem("username") || ""
     const [deleteOpen, setDeleteOpen] = useState(false)
 
-
+    let navigate = useNavigate()
   return (
     <Fade triggerOnce cascade className="blog flex flex-col my-[10px] items-center">
       <div className="flex ">

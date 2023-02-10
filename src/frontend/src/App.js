@@ -8,6 +8,8 @@ import {LoginPage} from "./pages/LoginPage";
 import {ProfilePage} from "./pages/ProfilePage";
 import {CreatePage} from "./pages/CreatePage";
 import {SearchPage} from "./pages/SearchPage";
+import {UpdatePage} from "./pages/UpdatePage";
+
 import Footer from "./components/Footer";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -38,6 +40,7 @@ function App() {
                 <Route exact path="/login" element={<LoginPage />} />
                 <Route exact path="/blog/:id" element={<BlogPage />} />
                 <Route exact path="/create" element={<CreatePage/>} />
+                <Route exact path="/update/:id" element={<UpdatePage/>} />
                 <Route exact path="/user/:username" element={<ProfilePage />} />
                 <Route exact path="/search" element={<SearchPage />} />
                 <Route exact path="*" element={<NotFound />} />

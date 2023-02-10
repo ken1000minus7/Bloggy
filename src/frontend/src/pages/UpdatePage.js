@@ -1,11 +1,17 @@
 import React, {useEffect, useState} from "react";
-import {useParams} from "react-router";
+import {Button, Tab, Tabs} from "@mui/material";
+import Lottie from "react-lottie-player";
+import writerAnimation from '../assets/writer.json'
+import {MarkdownText} from "../components/MarkdownText";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import {TextField} from "@mui/material";
 import axios from "axios";
-import {Blog} from "../components/Blog";
-import {LoadingDialog} from "../components/LoadingDialog";
+import {BlogList} from "../components/BlogList";
+import { useParams } from "react-router";
 
 import {useNavigate} from "react-router";
-export const BlogPage = ()=>{
+export const UpdatePage= ()=>{
 
     
     const {id} = useParams()
@@ -32,7 +38,7 @@ export const BlogPage = ()=>{
         axios.get(`${process.env.REACT_APP_API_BASE_URL}/blog/${id}`,{
             method : "GET"
         })
-            .then(response=> {setBlog(response.data), setTitle(response.data.title), setContent(response.data.content)})
+            .then(response=> {setBlog(response.data)}).then(setTitle(blog.title)).then(setContent(blog.content))
             .catch(error=> console.log(error))
             .finally(()=> setLoading(false))
     },[])
