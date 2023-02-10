@@ -7,6 +7,7 @@ import {LoadingDialog} from "../components/LoadingDialog";
 import {useNavigate} from "react-router";
 export const BlogPage = ()=>{
 
+    
     const {id} = useParams()
     const [blog,setBlog] = useState(null)
     const [loading,setLoading] = useState(false)
