@@ -4,6 +4,7 @@ import axios from "axios";
 import {Blog} from "../components/Blog";
 import {LoadingDialog} from "../components/LoadingDialog";
 
+import {useNavigate} from "react-router";
 export const BlogPage = ()=>{
 
     const {id} = useParams()
@@ -30,7 +31,7 @@ export const BlogPage = ()=>{
         axios.get(`${process.env.REACT_APP_API_BASE_URL}/blog/${id}`,{
             method : "GET"
         })
-            .then(response=> setBlog(response.data))
+            .then(response=> {setBlog(response.data), setTitle(response.data.title), setContent(response.data.content)})
             .catch(error=> console.log(error))
             .finally(()=> setLoading(false))
     },[])
@@ -93,7 +94,7 @@ export const BlogPage = ()=>{
             <div className="mx-[20px] my-[10px] sm:mx-[10px]">
                 <TextField
                     variant="outlined"
-                    value={blog.title}
+                    value={title}
                     placeholder="Title"
                     fullWidth
                     inputProps={{ style :{textAlign : "center", fontWeight : "bold", fontSize : width > 640 ? "30px" : "20px" , fontFamily : "serif", padding : "10px"}}}
@@ -109,7 +110,7 @@ export const BlogPage = ()=>{
                     (value===0) ? (
                         <TextField
                             multiline
-                            value={blog.content}
+                            value={content}
                             rows={16}
                             fullWidth
                             onChange={changeContent}
