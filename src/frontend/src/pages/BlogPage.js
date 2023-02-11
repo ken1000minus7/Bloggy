@@ -22,7 +22,7 @@ export const BlogPage = ()=>{
     return(
         <>
             {
-                blog && <Blog blog={blog} />
+                blog && <Blog blog={blog}/>
             }
             <LoadingDialog
                 open={loading}
