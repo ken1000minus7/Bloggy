@@ -6,8 +6,12 @@ import {AccountBox, Add, Home, Logout, Search} from "@mui/icons-material";
 import {useNavigate} from "react-router";
 import {LogoutDialog} from "./LogoutDialog";
 import logo from '../assets/logo.png'
+import { Switch } from "@mui/material";
+import PropTypes from 'prop-types';
+import { createContext } from "react";
+export const ThemeContext = createContext(null);
 
-export const Navbar = ({changeTheme})=>{
+export const Navbar = (props)=>{
     let navigate = useNavigate()
 
     const [username,setUsername] = useState(localStorage.getItem("username"))
@@ -57,6 +61,7 @@ export const Navbar = ({changeTheme})=>{
 
             </Link>
             <div className="flex flex-auto flex-row mx-[10px] sm:mx-0 sm:justify-evenly">
+            <Switch onChange={props.toggleTheme} checked={props.theme === "dark"} className="m-[10px] sm:m-0" />
                 <NavbarItem to="/home" title="Home" icon={<Home fontSize={(width>830 || width<600 ? "medium" : "large")}/>} />
                 <NavbarItem to="/search" title="Search" icon={<Search fontSize={(width>830 || width<600 ? "medium" : "large")}/>} />
                 <NavbarItem to={`/${username ? "create" : "login"}`} title="Create" icon={<Add fontSize={(width>830 || width<600 ? "medium" : "large")}/>}/>
