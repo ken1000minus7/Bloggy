@@ -61,11 +61,11 @@ export const Navbar = (props)=>{
 
             </Link>
             <div className="flex flex-auto flex-row mx-[10px] sm:mx-0 sm:justify-evenly">
-            <Switch onChange={props.toggleTheme} checked={props.theme === "dark"} className="m-[10px] sm:m-0" />
                 <NavbarItem to="/home" title="Home" icon={<Home fontSize={(width>830 || width<600 ? "medium" : "large")}/>} />
                 <NavbarItem to="/search" title="Search" icon={<Search fontSize={(width>830 || width<600 ? "medium" : "large")}/>} />
                 <NavbarItem to={`/${username ? "create" : "login"}`} title="Create" icon={<Add fontSize={(width>830 || width<600 ? "medium" : "large")}/>}/>
             </div>
+            <Switch onChange={props.toggleTheme} checked={props.theme === "dark"} className="m-[10px] sm:m-0" />
             {
                 username ? (
                     <div>
