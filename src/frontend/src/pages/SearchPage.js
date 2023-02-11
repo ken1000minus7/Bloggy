@@ -32,7 +32,7 @@ export const SearchPage = ()=>{
     }
 
     return (
-        <div className="flex flex-col items-center">
+        <div className="homeText flex flex-col items-center">
             <div className="font-bold font-SourceSansPro text-[40px] my-[20px] text-center sm:text-[30px] sm:mx-[10px]">
                 Explore our collection of blogs
             </div>

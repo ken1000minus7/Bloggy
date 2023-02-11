@@ -12,26 +12,21 @@ import Footer from "./components/Footer";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-function App() {
-    if(localStorage.getItem("theme")==null)
-        localStorage.setItem("theme","light")
+import { createContext, useState } from "react";
+export const ThemeContext = createContext(null);
 
-    const changeTheme = (event)=>{
-        let theme = localStorage.getItem("theme")
-        if((theme==="dark")!==event.target.checked){
-            if(theme==="dark"){
-                theme = "light"
-            }
-            else{
-                theme = "dark"
-            }
-            localStorage.setItem("theme",theme)
-        }
-        console.log(localStorage.getItem("theme"))
-    }
+function App() {
+
+    const [theme, setTheme] = useState("light");
+    const toggleTheme = () => {
+    setTheme((curr) => (curr === "light" ? "dark" : "light"));
+        };
+    
     return (
-        <div className="App">
-            <Navbar changeTheme={changeTheme}/>
+        <ThemeContext.Provider value={{ theme, toggleTheme }}>
+        <div className="App" id={theme}>
+            <Navbar theme={theme} toggleTheme={toggleTheme} />
+            
             <Routes>
                 <Route index element={<HomePage />} />
                 <Route exact path="/home" element={<HomePage />} />
@@ -45,6 +40,7 @@ function App() {
             <Footer/>
             <ToastContainer/>
         </div>
+        </ThemeContext.Provider>
     );
 }
 
