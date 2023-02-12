@@ -175,4 +175,53 @@
         vertical-align: middle;
         border-color: inherit;
     }
+
+    #dark{
+        background-color: #07062b;
+    }
+    #dark .Navbar{
+        background-color: #25025a;
+    }
+    #dark .NavbarItemText{
+        color: white;
+    }
+    #dark .NavbarItemText:hover{
+        color: rgb(77, 0, 128);
+    }
+    #dark .loginButton:hover{
+        color: pink;
+    }
+    #dark .homeText{
+        color: white;
+    }
+    #dark .footerText{
+        background-color: #350e6f;
+        color: white;
+    }
+    #dark .footerText2{
+        background-color: #25025a;
+        color: white;
+    }
+    #dark .loginForm{
+        background-color: #634c83;
+        
+    }
+    #dark .loginForm button{
+        color: white;
+    }
+    #dark .button:hover{
+        color: #350e6f;
+        background-color: rgb(255, 255, 255);
+    }
+    #dark .logButton{
+        border: 2px solid;
+    }
+    #dark .createBlog{
+        border: 2px solid #0c93e4 ;
+    }
+    #dark .createBlog:hover{
+        border: 2px solid #0c93e4 ;
+        background-color: white;
+    }
+    
 }

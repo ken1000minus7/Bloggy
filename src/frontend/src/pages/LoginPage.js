@@ -146,7 +146,7 @@ export const LoginPage = ()=>{
 
     return (
         <div>
-            <div className="font-bold font-SourceSansPro text-[45px] m-[20px] text-center md:text-[30px] md:mx-[10px]">
+            <div className="homeText font-bold font-SourceSansPro text-[45px] m-[20px] text-center md:text-[30px] md:mx-[10px]">
                 Begin your blogging journey with <span className="font-itim font-extrabold text-[50px] md:text-[35px]">Bloggy</span>
             </div>
             <div className="flex flex-row md:flex-col">
@@ -156,7 +156,7 @@ export const LoginPage = ()=>{
                     play
                     className="basis-[50%]"
                 />
-                <div className="basis-[50%] mr-[30px] rounded-[10px] shadow-md md:mx-[10px]">
+                <div className="loginForm homeText basis-[50%] mr-[30px] rounded-[10px] shadow-md md:mx-[10px]">
                     <Tabs value={value} onChange={changeValue}>
                         <Tab label="Login"/>
                         <Tab label="Register" />
@@ -165,29 +165,31 @@ export const LoginPage = ()=>{
                         (value===0) ? (
                             <div className="flex flex-col w-[100%] h-[100%] justify-evenly items-center pt-[2px] md:pt-[10px]">
                                 <TextField
+                                
                                     label="Username"
                                     value={username}
                                     variant="outlined"
                                     className="w-[90%]"
                                     margin="dense"
                                     onChange={changeUsername}
+                                
                                 />
                                 <TextField
                                     label="Password"
                                     value={password}
                                     type="password"
                                     variant="outlined"
-                                    className="w-[90%]"
+                                    className="w-[90%] "
                                     margin="dense"
                                     onChange={changePassword}
                                 />
                                 <div className="flex flex-col mb-[40px] items-center">
-                                    <div className="mb-[10px]">
-                                        New user? <Button onClick={(event)=>{changeValue(event,1)}}>Register</Button>
+                                    <div className=" homeText mb-[10px]">
+                                        New user? <Button className="button" style={{color:"pink"}} onClick={(event)=>{changeValue(event,1)}}>Register</Button>
                                     </div>
                                     <Button
                                         variant="outlined"
-                                        className="m-[10px]"
+                                        className="m-[10px] button logButton"
                                         style={{fontSize : "20px"}}
                                         onClick={handleLogin}
                                     >
@@ -251,11 +253,12 @@ export const LoginPage = ()=>{
                                         style={{ marginLeft : width>760 ? "10px" : "0px"}}
                                     />
                                 </div>
-                                <div className="flex font-SourceSansPro flex-col mb-[55px] items-center md:mb-[10px]">
+                                <div className="flex homeText font-SourceSansPro flex-col mb-[55px] items-center md:mb-[10px]">
                                     <div>
-                                        Already have an account? <Button onClick={(event)=>{changeValue(event,0)}}>Login</Button>
+                                        Already have an account? <Button className="button" style={{color:"pink"}} onClick={(event)=>{changeValue(event,0)}}>Login</Button>
                                     </div>
                                     <Button
+                                        className="button logButton"
                                         variant="outlined"
                                         style={{fontSize : "20px"}}
                                         onClick={handleRegister}

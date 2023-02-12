@@ -21,6 +21,7 @@ target/
 
 ### NetBeans ###
 /src/frontend/.yarn
+/src/frontend/node_modules
 /src/frontend/yarn.lock
 /src/frontend/.yarnrc.yml
 /nbproject/private/
