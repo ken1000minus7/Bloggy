@@ -13,7 +13,7 @@ public class Comment {
     @Column(nullable = false, updatable = false)
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "blog_sequence")
     private long id;
-    private String title;
+   
     private long replyTo;
 
     @Lob
@@ -27,8 +27,8 @@ public class Comment {
     @JoinColumn(name = "author_id")
     private User author;
 
-    public Comment(String title, String content) {
-        this.title = title;
+    public Comment( String content) {
+  
         this.content = content;
         this.replyTo=-1;
     }
@@ -49,14 +49,6 @@ public class Comment {
 
     public void setId(long id) {
         this.id = id;
-    }
-
-    public String getTitle() {
-        return title;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
     }
 
     public String getContent() {
