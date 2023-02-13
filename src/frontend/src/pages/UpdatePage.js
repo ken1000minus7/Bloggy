@@ -11,6 +11,7 @@ import {BlogList} from "../components/BlogList";
 import { useParams } from "react-router";
 
 import {useNavigate} from "react-router";
+import {LoadingDialog} from "../components/LoadingDialog";
 export const UpdatePage= ()=>{
 
     
@@ -38,7 +39,17 @@ export const UpdatePage= ()=>{
         axios.get(`${process.env.REACT_APP_API_BASE_URL}/blog/${id}`,{
             method : "GET"
         })
-            .then(response=> {setBlog(response.data)}).then(setTitle(blog.title)).then(setContent(blog.content))
+            .then(response => {
+                setBlog(response.data)
+                setTitle(response.data.title)
+                setContent(response.data.content)
+                if(response.data.author.username !== localStorage.getItem("username")) {
+                    toast.error("You are not authorized to update this blog", {
+                        position: toast.POSITION.TOP_CENTER
+                    });
+                    navigate("/")
+                }
+            })
             .catch(error=> console.log(error))
             .finally(()=> setLoading(false))
     },[])
@@ -142,6 +153,7 @@ export const UpdatePage= ()=>{
                     Update
                 </Button>
             </center>
+            <LoadingDialog open={loading} onClose={() => {}} />
         </div>
     )
 
