@@ -3,14 +3,13 @@ import { Fade } from "react-awesome-reveal";
 import { Link } from "react-router-dom";
 import { MarkdownText } from "./MarkdownText";
 import { DeleteDialog } from "./DeleteDialog";
-
-export const Blog = ({ blog }) => {
+import {useNavigate} from "react-router";
+export const Blog = ({ blog}) => {
 
     const username = localStorage.getItem("username") || ""
     const [deleteOpen, setDeleteOpen] = useState(false)
 
-
-
+    let navigate = useNavigate()
   return (
     <Fade triggerOnce cascade className="blog flex flex-col my-[10px] items-center">
       <div className="flex ">
@@ -70,6 +69,16 @@ export const Blog = ({ blog }) => {
                     </svg>
                 </button>
                 <DeleteDialog open={deleteOpen} setOpen={setDeleteOpen} id={blog.id} />
+                <button onClick={()=>{
+                   if(localStorage.getItem("username")){
+                                    navigate(`/update/${blog.id}`)
+                                }
+                                else{
+                                    navigate('/login')
+                                }
+                }} class="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded">
+                Update The Blog
+                </button>
             </div> ) : ( <></> )
       }
     </Fade>

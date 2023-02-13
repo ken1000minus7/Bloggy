@@ -54,9 +54,9 @@ public class BlogController {
         return ResponseEntity.ok(blogService.getAllBlogs().get(0).getId());
     }
 
-    @PutMapping("/blog")
-    public void updateBlog(@RequestBody Blog blog){
-        blogService.updateBlog(blog);
+    @PutMapping("/blog/{blogid}")
+    public void updateBlog(@RequestBody Blog blog, @PathVariable long blogid){
+        blogService.updateBlog(blog, blogid);
     }
 
     @DeleteMapping("/blog/{id}")
