@@ -122,7 +122,7 @@ export const CreatePage = ()=>{
                 <Button
                 className="createButton"
                     onClick={handleCreate}
-                    style={{fontSize : width> 640 ? "22px" : "15px", margin : "15px", color:"purple", border:"1px solid purple", hover:{backgroundColor:"white"}}}
+                    style={{fontSize : width> 640 ? "22px" : "15px", margin : "15px", color:"purple", border:"1px solid purple"}}
                     variant="outlined"
                 >
                     Create
