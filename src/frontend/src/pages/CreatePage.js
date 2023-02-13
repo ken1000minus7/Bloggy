@@ -82,7 +82,7 @@ export const CreatePage = ()=>{
                     className="h-[80px] md:h-[150px] sm:h-[100px]"
                     />
             </div>
-            <div className=" mx-[20px] my-[10px] sm:mx-[10px]">
+            <div className="loginForm mx-[20px] my-[10px] sm:mx-[10px]">
                 <TextField
                     variant="outlined"
                     value={title}
@@ -92,7 +92,7 @@ export const CreatePage = ()=>{
                     onChange={changeTitle}
                 />
             </div>
-            <div className="mx-[20px] my-[10px] shadow-lg h-[450px] flex flex-col rounded-[10px] sm:mx-[10px]">
+            <div className="loginForm mx-[20px] my-[10px] shadow-lg h-[450px] flex flex-col rounded-[10px] sm:mx-[10px]">
                 <Tabs value={value} onChange={changeValue}>
                     <Tab label="Edit" />
                     <Tab label="Preview" />
@@ -107,6 +107,7 @@ export const CreatePage = ()=>{
                             onChange={changeContent}
                             inputProps={{style : {fontSize : width > 640 ? "16px" : "14px"}}}
                             placeholder="Your blog"
+                            border="2px solid white"
                         />
                     ) : (
                         <MarkdownText
@@ -119,8 +120,9 @@ export const CreatePage = ()=>{
             </div>
             <center>
                 <Button
+                className="createButton"
                     onClick={handleCreate}
-                    style={{fontSize : width> 640 ? "22px" : "15px", margin : "15px"}}
+                    style={{fontSize : width> 640 ? "22px" : "15px", margin : "15px", color:"purple", border:"1px solid purple", hover:{backgroundColor:"white"}}}
                     variant="outlined"
                 >
                     Create

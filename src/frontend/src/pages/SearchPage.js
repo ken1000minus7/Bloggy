@@ -36,7 +36,7 @@ export const SearchPage = ()=>{
             <div className="font-bold font-SourceSansPro text-[40px] my-[20px] text-center sm:text-[30px] sm:mx-[10px]">
                 Explore our collection of blogs
             </div>
-            <div className="flex flex-row items-center w-[50%] sm:w-[90%]" >
+            <div className="loginForm flex flex-row items-center w-[50%] sm:w-[90%]" >
                 <TextField
                     value={query}
                     onChange={changeQuery}
