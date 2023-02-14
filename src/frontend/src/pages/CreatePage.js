@@ -72,7 +72,7 @@ export const CreatePage = ()=>{
     return (
         <div>
             <div className="homeText flex flex-row items-center justify-center md:flex-col md:mx-[10px]">
-                <div className="text-[45px] font-bold my-[20px] md:text-center sm:text-[30px]">
+                <div className="font-itim text-[45px] font-bold my-[20px] md:text-center sm:text-[30px]">
                     Pour your creativity into words
                 </div>
                 <Lottie
@@ -84,11 +84,36 @@ export const CreatePage = ()=>{
             </div>
             <div className="loginForm mx-[20px] my-[10px] sm:mx-[10px]">
                 <TextField
+                    style={{ backgroundColor: '#9868bb' }}
+                    sx={{
+                        "& .MuiInputBase-root": {
+                            color: 'white'
+                        },
+                        "& .MuiFormLabel-root": {
+                            color: 'antiquewhite'
+                        },
+                        "& .MuiFormLabel-root.Mui-focused": {
+                            color: 'pink'
+                        },
+                        "& .MuiOutlinedInput-root": {
+                        "& > fieldset": { borderColor: "none" },
+                        },   
+                        "& .MuiOutlinedInput-root:hover": {
+                          "& > fieldset": {
+                            borderColor: "pink"
+                          }
+                        },
+                        "& .MuiOutlinedInput-root.Mui-focused": {
+                            "& > fieldset": {
+                              borderColor: "gray"
+                            }
+                          }
+                    }}
                     variant="outlined"
                     value={title}
                     placeholder="Title"
                     fullWidth
-                    inputProps={{ style :{textAlign : "center", fontWeight : "bold", fontSize : width > 640 ? "30px" : "20px" , fontFamily : "serif", padding : "10px"}}}
+                    inputProps={{ style :{textAlign : "center", fontWeight : "bold",color:"white", fontSize : width > 640 ? "30px" : "20px" , fontFamily : "serif", padding : "10px"}}}
                     onChange={changeTitle}
                 />
             </div>
@@ -100,6 +125,31 @@ export const CreatePage = ()=>{
                 {
                     (value===0) ? (
                         <TextField
+                        style={{ backgroundColor: '#9868bb' }}
+                        sx={{
+                            "& .MuiInputBase-root": {
+                                color: 'white'
+                            },
+                            "& .MuiFormLabel-root": {
+                                color: 'antiquewhite'
+                            },
+                            "& .MuiFormLabel-root.Mui-focused": {
+                                color: 'pink'
+                            },
+                            "& .MuiOutlinedInput-root": {
+                            "& > fieldset": { borderColor: "none" },
+                            },   
+                            "& .MuiOutlinedInput-root:hover": {
+                              "& > fieldset": {
+                                borderColor: "pink"
+                              }
+                            },
+                            "& .MuiOutlinedInput-root.Mui-focused": {
+                                "& > fieldset": {
+                                  borderColor: "gray"
+                                }
+                              }
+                        }}
                             multiline
                             value={content}
                             rows={16}
@@ -111,7 +161,7 @@ export const CreatePage = ()=>{
                         />
                     ) : (
                         <MarkdownText
-                            className="blog text-left p-[15px] text-[17px] overflow-y-auto h-[100%] w-[100%] sm:[15px]"
+                            className="blog bg-[#9868bb] text-white text-left p-[15px] text-[17px] overflow-y-auto h-[100%] w-[100%] sm:[15px]"
                         >
                             {content}
                         </MarkdownText>

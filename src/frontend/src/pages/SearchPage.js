@@ -38,6 +38,31 @@ export const SearchPage = ()=>{
             </div>
             <div className="loginForm flex flex-row items-center w-[50%] sm:w-[90%]" >
                 <TextField
+                    style={{ backgroundColor: '#d4a7d5' }}
+                    sx={{
+                        "& .MuiInputBase-root": {
+                            color: 'purple'
+                        },
+                        "& .MuiFormLabel-root": {
+                            color: 'gray'
+                        },
+                        "& .MuiFormLabel-root.Mui-focused": {
+                            color: 'pink'
+                        },
+                        "& .MuiOutlinedInput-root": {
+                        "& > fieldset": { borderColor: "none" },
+                        },   
+                        "& .MuiOutlinedInput-root:hover": {
+                          "& > fieldset": {
+                            borderColor: "pink"
+                          }
+                        },
+                        "& .MuiOutlinedInput-root.Mui-focused": {
+                            "& > fieldset": {
+                              borderColor: "gray"
+                            }
+                          }
+                    }}
                     value={query}
                     onChange={changeQuery}
                     variant="outlined"

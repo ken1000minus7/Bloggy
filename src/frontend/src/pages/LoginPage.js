@@ -156,7 +156,7 @@ export const LoginPage = ()=>{
                     play
                     className="basis-[50%]"
                 />
-                <div className="loginForm homeText basis-[50%] mr-[30px] rounded-[10px] shadow-md md:mx-[10px]">
+                <div className="loginForm border-2 border-[#6134a0] homeText basis-[50%] mr-[30px] rounded-[10px] shadow-md md:mx-[10px]">
                     <Tabs value={value} onChange={changeValue}>
                         <Tab label="Login"/>
                         <Tab label="Register" />
@@ -165,16 +165,65 @@ export const LoginPage = ()=>{
                         (value===0) ? (
                             <div className="flex flex-col w-[100%] h-[100%] justify-evenly items-center pt-[2px] md:pt-[10px]">
                                 <TextField
-                                
+                                style={{ backgroundColor: '#9868bb' }}
+                                sx={{
+                                    "& .MuiInputBase-root": {
+                                        color: 'white'
+                                    },
+                                    "& .MuiFormLabel-root": {
+                                        color: 'antiquewhite'
+                                    },
+                                    "& .MuiFormLabel-root.Mui-focused": {
+                                        color: 'pink'
+                                    },
+                                    "& .MuiOutlinedInput-root": {
+                                    "& > fieldset": { borderColor: "none" },
+                                    },   
+                                    "& .MuiOutlinedInput-root:hover": {
+                                      "& > fieldset": {
+                                        borderColor: "pink"
+                                      }
+                                    },
+                                    "& .MuiOutlinedInput-root.Mui-focused": {
+                                        "& > fieldset": {
+                                          borderColor: "purple"
+                                        }
+                                      }
+                                }}
                                     label="Username"
                                     value={username}
                                     variant="outlined"
-                                    className="w-[90%]"
+                                    className="w-[90%] form"
                                     margin="dense"
                                     onChange={changeUsername}
                                 
                                 />
                                 <TextField
+                                style={{ backgroundColor: '#9868bb' }}
+                                sx={{
+                                    "& .MuiInputBase-root": {
+                                        color: 'white'
+                                    },
+                                    "& .MuiFormLabel-root": {
+                                        color: 'antiquewhite'
+                                    },
+                                    "& .MuiFormLabel-root.Mui-focused": {
+                                        color: 'pink'
+                                    },
+                                    "& .MuiOutlinedInput-root": {
+                                    "& > fieldset": { borderColor: "none" },
+                                    },   
+                                    "& .MuiOutlinedInput-root:hover": {
+                                      "& > fieldset": {
+                                        borderColor: "pink"
+                                      }
+                                    },
+                                    "& .MuiOutlinedInput-root.Mui-focused": {
+                                        "& > fieldset": {
+                                          borderColor: "purple"
+                                        }
+                                      }
+                                }}
                                     label="Password"
                                     value={password}
                                     type="password"
@@ -202,23 +251,99 @@ export const LoginPage = ()=>{
                             <div className="flex flex-col w-[100%] h-[100%] justify-evenly items-center md:pt-[10px] md:my-[5px]">
                                 <div className="flex flex-row w-[90%] md:flex-col s">
                                     <TextField
+                                        sx={{
+                                            "& .MuiInputBase-root": {
+                                                color: 'white'
+                                            },
+                                            "& .MuiFormLabel-root": {
+                                                color: 'antiquewhite'
+                                            },
+                                            "& .MuiFormLabel-root.Mui-focused": {
+                                                color: 'pink'
+                                            },
+                                            "& .MuiOutlinedInput-root": {
+                                            "& > fieldset": { borderColor: "none" },
+                                            },   
+                                            "& .MuiOutlinedInput-root:hover": {
+                                              "& > fieldset": {
+                                                borderColor: "pink"
+                                              }
+                                            },
+                                            "& .MuiOutlinedInput-root.Mui-focused": {
+                                                "& > fieldset": {
+                                                  borderColor: "purple"
+                                                }
+                                              }
+                                        }}
                                         label="First Name"
                                         value={firstName}
                                         variant="outlined"
                                         onChange={changeFirstName}
                                         className="flex-1"
-                                        style={{marginRight : width>760 ? "10px" : "0px"}}
+                                        style={{marginRight : width>760 ? "10px" : "0px",
+                                         backgroundColor: '#9868bb' }
+                                    }
                                     />
                                     <TextField
+                                        sx={{
+                                            "& .MuiInputBase-root": {
+                                                color: 'white'
+                                            },
+                                            "& .MuiFormLabel-root": {
+                                                color: 'antiquewhite'
+                                            },
+                                            "& .MuiFormLabel-root.Mui-focused": {
+                                                color: 'pink'
+                                            },
+                                            "& .MuiOutlinedInput-root": {
+                                            "& > fieldset": { borderColor: "none" },
+                                            },   
+                                            "& .MuiOutlinedInput-root:hover": {
+                                              "& > fieldset": {
+                                                borderColor: "pink"
+                                              }
+                                            },
+                                            "& .MuiOutlinedInput-root.Mui-focused": {
+                                                "& > fieldset": {
+                                                  borderColor: "purple"
+                                                }
+                                              }
+                                        }}
                                         label="Last Name"
                                         value={lastName}
                                         variant="outlined"
                                         onChange={changeLastName}
                                         className="flex-1"
-                                        style={{marginLeft : width>760 ? "10px" : "0px"}}
+                                        style={{marginLeft : width>760 ? "10px" : "0px", backgroundColor: '#9868bb' 
+                                    }}
                                     />
                                 </div>
                                 <TextField
+                                    style={{ backgroundColor: '#9868bb' }}
+                                    sx={{
+                                        "& .MuiInputBase-root": {
+                                            color: 'white'
+                                        },
+                                        "& .MuiFormLabel-root": {
+                                            color: 'antiquewhite'
+                                        },
+                                        "& .MuiFormLabel-root.Mui-focused": {
+                                            color: 'pink'
+                                        },
+                                        "& .MuiOutlinedInput-root": {
+                                        "& > fieldset": { borderColor: "none" },
+                                        },   
+                                        "& .MuiOutlinedInput-root:hover": {
+                                          "& > fieldset": {
+                                            borderColor: "pink"
+                                          }
+                                        },
+                                        "& .MuiOutlinedInput-root.Mui-focused": {
+                                            "& > fieldset": {
+                                              borderColor: "purple"
+                                            }
+                                          }
+                                    }}
                                     label="Username"
                                     value={username}
                                     variant="outlined"
@@ -226,6 +351,31 @@ export const LoginPage = ()=>{
                                     onChange={changeUsername}
                                 />
                                 <TextField
+                                    style={{ backgroundColor: '#9868bb' }}
+                                    sx={{
+                                        "& .MuiInputBase-root": {
+                                            color: 'white'
+                                        },
+                                        "& .MuiFormLabel-root": {
+                                            color: 'antiquewhite'
+                                        },
+                                        "& .MuiFormLabel-root.Mui-focused": {
+                                            color: 'pink'
+                                        },
+                                        "& .MuiOutlinedInput-root": {
+                                        "& > fieldset": { borderColor: "none" },
+                                        },   
+                                        "& .MuiOutlinedInput-root:hover": {
+                                          "& > fieldset": {
+                                            borderColor: "pink"
+                                          }
+                                        },
+                                        "& .MuiOutlinedInput-root.Mui-focused": {
+                                            "& > fieldset": {
+                                              borderColor: "purple"
+                                            }
+                                          }
+                                    }}
                                     label="Email"
                                     value={email}
                                     type="email"
@@ -235,22 +385,70 @@ export const LoginPage = ()=>{
                                 />
                                 <div className="flex flex-row w-[90%] md:flex-col">
                                     <TextField
+                                        sx={{
+                                            "& .MuiInputBase-root": {
+                                                color: 'white'
+                                            },
+                                            "& .MuiFormLabel-root": {
+                                                color: 'antiquewhite'
+                                            },
+                                            "& .MuiFormLabel-root.Mui-focused": {
+                                                color: 'pink'
+                                            },
+                                            "& .MuiOutlinedInput-root": {
+                                            "& > fieldset": { borderColor: "none" },
+                                            },   
+                                            "& .MuiOutlinedInput-root:hover": {
+                                              "& > fieldset": {
+                                                borderColor: "pink"
+                                              }
+                                            },
+                                            "& .MuiOutlinedInput-root.Mui-focused": {
+                                                "& > fieldset": {
+                                                  borderColor: "purple"
+                                                }
+                                              }
+                                        }}
                                         label="Password"
                                         value={password}
                                         type="password"
                                         variant="outlined"
                                         onChange={changePassword}
                                         className="flex-1"
-                                        style={{marginRight : width>760 ? "10px" : "0px"}}
+                                        style={{marginRight : width>760 ? "10px" : "0px", backgroundColor: '#9868bb' }}
                                     />
                                     <TextField
+                                        sx={{
+                                            "& .MuiInputBase-root": {
+                                                color: 'white'
+                                            },
+                                            "& .MuiFormLabel-root": {
+                                                color: 'antiquewhite'
+                                            },
+                                            "& .MuiFormLabel-root.Mui-focused": {
+                                                color: 'pink'
+                                            },
+                                            "& .MuiOutlinedInput-root": {
+                                            "& > fieldset": { borderColor: "none" },
+                                            },   
+                                            "& .MuiOutlinedInput-root:hover": {
+                                              "& > fieldset": {
+                                                borderColor: "pink"
+                                              }
+                                            },
+                                            "& .MuiOutlinedInput-root.Mui-focused": {
+                                                "& > fieldset": {
+                                                  borderColor: "purple"
+                                                }
+                                              }
+                                        }}
                                         label="Confirm Password"
                                         value={confirmPassword}
                                         type="password"
                                         variant="outlined"
                                         onChange={changeConfirmPassword}
                                         className="flex-1"
-                                        style={{ marginLeft : width>760 ? "10px" : "0px"}}
+                                        style={{ marginLeft : width>760 ? "10px" : "0px", backgroundColor: '#9868bb' }}
                                     />
                                 </div>
                                 <div className="flex homeText font-SourceSansPro flex-col mb-[55px] items-center md:mb-[10px]">
