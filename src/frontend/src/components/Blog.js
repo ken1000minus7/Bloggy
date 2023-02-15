@@ -4,8 +4,7 @@ import { Link } from "react-router-dom";
 import { MarkdownText } from "./MarkdownText";
 import { DeleteDialog } from "./DeleteDialog";
 import {useNavigate} from "react-router";
-import PropTypes from 'prop-types';
-export const Blog = ({blog}) => {
+export const Blog = ({ blog}) => {
 
     const username = localStorage.getItem("username") || ""
     const [deleteOpen, setDeleteOpen] = useState(false)
@@ -14,13 +13,14 @@ export const Blog = ({blog}) => {
   return (
     <Fade triggerOnce cascade className="blog flex flex-col my-[10px] items-center">
       <div className="flex ">
-        <div className="font-itim homeText font-bold text-[60px] text-center md:text-[50px] pr-4">
-        Just blogging    {/* {blog.title}  */}
+        <div className="homeText font-itim font-bold text-[60px] text-center md:text-[50px] pr-4">
+            {blog.title} 
         </div>
       </div>
-      <div className="font-light homeText text-[15px] text-center mb-0">
-        By Nikhil <br />
-       
+      <div className="homeText font-light text-[15px] text-center mb-0">
+        By <Link to={`/user/${blog.author.username}`} className="hover:text-cyan-500 duration-[300ms]">
+          {blog.author.firstName + " " + blog.author.lastName}</Link><br />
+        {new Date(blog.creationTime).toDateString()}
       </div>
       <div className = "flex justify-center items-center">
       <div className="mt-6 homeText">
@@ -37,18 +37,16 @@ export const Blog = ({blog}) => {
           </button>
         </div>
       </div>
-      <MarkdownText className="text-[18px] text-start my-[10px] homeText w-[100%] px-[20px] md:text-[15px]">
-        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Mollitia excepturi laboriosam, quos voluptates debitis dolore molestiae corrupti officiis! Repellendus quas debitis odio ea nam earum fuga a? Esse assumenda vero, in provident modi magnam molestias maxime recusandae ipsa saepe ratione laudantium voluptates, labore neque incidunt rerum quaerat. Illo, optio ex.
-        {/* {blog.content}  */}
+      <MarkdownText className="homeText text-[18px] text-start my-[10px] w-[100%] px-[20px] md:text-[15px]">{blog.content} 
       </MarkdownText>
 
       {
-         (
+        username === blog.author.username ? (
             <div>
                 <button onClick={() => {
                     setDeleteOpen(true);
-                }} type="button" className="bg-red-100 border border-red-700 hover:bg-red-400 rounded-md p-2.5  inline-flex items-center hover:text-white hover:scale-[1.05] hover:duration-200">
-                    <svg className="w-5 h-5" fill="black" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg"
+                }} type="button" className="border bg-red-100 border-red-700 hover:bg-red-400 rounded-md p-2.5  inline-flex items-center hover:text-white hover:scale-[1.05] hover:duration-200">
+                    <svg className="w-5 h-5" fill="#000000" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg"
                         width="800px" height="800px" viewBox="0 0 482.428 482.429">
                         <g>
                             <g>
@@ -70,7 +68,7 @@ export const Blog = ({blog}) => {
                         </g>
                     </svg>
                 </button>
-                <DeleteDialog open={deleteOpen} setOpen={setDeleteOpen} id={1} />
+                <DeleteDialog open={deleteOpen} setOpen={setDeleteOpen} id={blog.id} />
                 <button onClick={()=>{
                    if(localStorage.getItem("username")){
                                     navigate(`/update/${blog.id}`)
@@ -78,10 +76,10 @@ export const Blog = ({blog}) => {
                                 else{
                                     navigate('/login')
                                 }
-                }} class="bg-blue-500 homeText bg-transparent hover:bg-blue-600 text-white font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded mx-2">
+                }} class="bg-transparent bg-blue-500 hover:bg-blue-600 text-white font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded">
                 Update The Blog
                 </button>
-            </div> )
+            </div> ) : ( <></> )
       }
     </Fade>
   );
