@@ -32,12 +32,12 @@ function App() {
             <Routes>
                 <Route index element={<HomePage />} />
                 <Route exact path="/home" element={<HomePage />} />
-                <Route exact path="/login" element={<LoginPage />} />
+                <Route exact path="/login" element={<LoginPage theme={theme}/>} />
                 <Route exact path="/blog/:id" element={<BlogPage />} />
-                <Route exact path="/create" element={<CreatePage/>} />
+                <Route exact path="/create" element={<CreatePage theme={theme}/>} />
                 <Route exact path="/update/:id" element={<UpdatePage/>} />
                 <Route exact path="/user/:username" element={<ProfilePage />} />
-                <Route exact path="/search" element={<SearchPage />} />
+                <Route exact path="/search" element={<SearchPage theme={theme} />} />
                 <Route exact path="*" element={<NotFound />} />
             </Routes>
             <Footer/>

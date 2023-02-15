@@ -7,9 +7,10 @@ import writerAnimation from '../assets/writer.json'
 import {MarkdownText} from "../components/MarkdownText";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import PropTypes from 'prop-types';
 
 
-export const CreatePage = ()=>{
+export const CreatePage = ({theme})=>{
     let navigate = useNavigate()
 
     const [title,setTitle] = useState("")
@@ -72,7 +73,7 @@ export const CreatePage = ()=>{
     return (
         <div>
             <div className="homeText flex flex-row items-center justify-center md:flex-col md:mx-[10px]">
-                <div className="text-[45px] font-bold my-[20px] md:text-center sm:text-[30px]">
+                <div className="font-itim text-[45px] font-bold my-[20px] md:text-center sm:text-[30px]">
                     Pour your creativity into words
                 </div>
                 <Lottie
@@ -82,17 +83,32 @@ export const CreatePage = ()=>{
                     className="h-[80px] md:h-[150px] sm:h-[100px]"
                     />
             </div>
-            <div className=" mx-[20px] my-[10px] sm:mx-[10px]">
+            <div className="loginForm mx-[20px] my-[10px] sm:mx-[10px]">
                 <TextField
+                    sx={{
+                        "& .MuiOutlinedInput-root": {
+                        "& > fieldset": { borderColor: "none" },
+                        },   
+                        "& .MuiOutlinedInput-root:hover": {
+                          "& > fieldset": {
+                            borderColor: "pink"
+                          }
+                        },
+                        "& .MuiOutlinedInput-root.Mui-focused": {
+                            "& > fieldset": {
+                              borderColor: "rgb(202 175 252)"
+                            }
+                          }
+                    }}
                     variant="outlined"
                     value={title}
                     placeholder="Title"
                     fullWidth
-                    inputProps={{ style :{textAlign : "center", fontWeight : "bold", fontSize : width > 640 ? "30px" : "20px" , fontFamily : "serif", padding : "10px"}}}
+                    inputProps={{ style :{textAlign : "center", fontWeight : "bold", color: theme==="light"?"black":"white", fontSize : width > 640 ? "30px" : "20px" , fontFamily : "serif", padding : "10px"}}}
                     onChange={changeTitle}
                 />
             </div>
-            <div className="mx-[20px] my-[10px] shadow-lg h-[450px] flex flex-col rounded-[10px] sm:mx-[10px]">
+            <div className="loginForm mx-[20px] my-[10px] shadow-lg h-[450px] flex flex-col rounded-[10px] sm:mx-[10px]">
                 <Tabs value={value} onChange={changeValue}>
                     <Tab label="Edit" />
                     <Tab label="Preview" />
@@ -100,17 +116,33 @@ export const CreatePage = ()=>{
                 {
                     (value===0) ? (
                         <TextField
+                        sx={{
+                            "& .MuiOutlinedInput-root": {
+                            "& > fieldset": { borderColor: "none" },
+                            },   
+                            "& .MuiOutlinedInput-root:hover": {
+                              "& > fieldset": {
+                                borderColor: "pink"
+                              }
+                            },
+                            "& .MuiOutlinedInput-root.Mui-focused": {
+                                "& > fieldset": {
+                                  borderColor: "rgb(202 175 252)"
+                                }
+                              }
+                        }}
                             multiline
                             value={content}
                             rows={16}
                             fullWidth
                             onChange={changeContent}
-                            inputProps={{style : {fontSize : width > 640 ? "16px" : "14px"}}}
+                            inputProps={{style : {fontSize : width > 640 ? "16px" : "14px", color: theme==="dark"?"white":"black"}}}
                             placeholder="Your blog"
+                            border="2px solid white"
                         />
                     ) : (
                         <MarkdownText
-                            className="blog text-left p-[15px] text-[17px] overflow-y-auto h-[100%] w-[100%] sm:[15px]"
+                            className="blog text-white text-left p-[15px] text-[17px] overflow-y-auto h-[100%] w-[100%] sm:[15px]"
                         >
                             {content}
                         </MarkdownText>
@@ -119,8 +151,9 @@ export const CreatePage = ()=>{
             </div>
             <center>
                 <Button
+                className="createButton"
                     onClick={handleCreate}
-                    style={{fontSize : width> 640 ? "22px" : "15px", margin : "15px"}}
+                    style={{fontSize : width> 640 ? "22px" : "15px", margin : "15px", color:"purple", border: theme==="dark"?"2px solid purple":"1px solid purple"}}
                     variant="outlined"
                 >
                     Create

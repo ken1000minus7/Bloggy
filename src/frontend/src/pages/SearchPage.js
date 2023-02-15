@@ -6,8 +6,9 @@ import searchAnim from '../assets/search.json'
 import notFoundAnim from '../assets/notfound.json'
 import searchingAnim from '../assets/searchanimation.json'
 import Lottie from "react-lottie-player";
+import PropTypes from 'prop-types';
 
-export const SearchPage = ()=>{
+export const SearchPage = ({theme})=>{
     const [query,setQuery] = useState("")
     const [searching,setSearching] = useState(false)
     const [resultList,setResultList] = useState([])
@@ -36,8 +37,24 @@ export const SearchPage = ()=>{
             <div className="font-bold font-SourceSansPro text-[40px] my-[20px] text-center sm:text-[30px] sm:mx-[10px]">
                 Explore our collection of blogs
             </div>
-            <div className="flex flex-row items-center w-[50%] sm:w-[90%]" >
+            <div className="loginForm flex flex-row items-center w-[50%] sm:w-[90%]" >
                 <TextField
+                    inputProps={{ style: { color: theme==="dark"?"white":"black" }}}
+                    sx={{
+                        "& .MuiOutlinedInput-root": {
+                        "& > fieldset": { borderColor: "none" },
+                        },   
+                        "& .MuiOutlinedInput-root:hover": {
+                          "& > fieldset": {
+                            borderColor: "pink"
+                          }
+                        },
+                        "& .MuiOutlinedInput-root.Mui-focused": {
+                            "& > fieldset": {
+                              borderColor: "rgb(202 175 252)"
+                            }
+                          }
+                    }}
                     value={query}
                     onChange={changeQuery}
                     variant="outlined"

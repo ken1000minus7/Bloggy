@@ -203,8 +203,7 @@
         color: white;
     }
     #dark .loginForm{
-        background-color: #634c83;
-        
+        background-color: #4f2a82;
     }
     #dark .loginForm button{
         color: white;
@@ -223,5 +222,15 @@
         border: 2px solid #0c93e4 ;
         background-color: white;
     }
-    
+    #dark .createButton:hover{
+        background-color: white;
+    }
+    #dark .blogCard{
+        color: white;
+        background-color: #4f2a82;
+    }
+    #dark .blogCardAuthor{
+        color: white;
+        background-color: #3b1c68;
+    }
 }
