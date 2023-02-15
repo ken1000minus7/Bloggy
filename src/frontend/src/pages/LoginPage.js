@@ -11,8 +11,9 @@ import {
 import axios from "axios";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import PropTypes from 'prop-types';
 
-export const LoginPage = ()=>{
+export const LoginPage = ({theme})=>{
     let navigate = useNavigate()
     let jwtToken = localStorage.getItem("jwtToken")
     if(jwtToken!=null){
@@ -165,13 +166,11 @@ export const LoginPage = ()=>{
                         (value===0) ? (
                             <div className="flex flex-col w-[100%] h-[100%] justify-evenly items-center pt-[2px] md:pt-[10px]">
                                 <TextField
-                                style={{ backgroundColor: '#9868bb' }}
+                                inputProps={{ style: { color: theme==="dark"?"white":"black",background:theme==="dark"?"#5e369d":"white" }}}
                                 sx={{
-                                    "& .MuiInputBase-root": {
-                                        color: 'white'
-                                    },
+                                    
                                     "& .MuiFormLabel-root": {
-                                        color: 'antiquewhite'
+                                        color: '#c2aaff'
                                     },
                                     "& .MuiFormLabel-root.Mui-focused": {
                                         color: 'pink'
@@ -199,13 +198,11 @@ export const LoginPage = ()=>{
                                 
                                 />
                                 <TextField
-                                style={{ backgroundColor: '#9868bb' }}
+                                inputProps={{ style: { color: theme==="dark"?"white":"black",background:theme==="dark"?"#5e369d":"white" }}}
                                 sx={{
-                                    "& .MuiInputBase-root": {
-                                        color: 'white'
-                                    },
+                                    
                                     "& .MuiFormLabel-root": {
-                                        color: 'antiquewhite'
+                                        color: '#c2aaff'
                                     },
                                     "& .MuiFormLabel-root.Mui-focused": {
                                         color: 'pink'
@@ -251,12 +248,11 @@ export const LoginPage = ()=>{
                             <div className="flex flex-col w-[100%] h-[100%] justify-evenly items-center md:pt-[10px] md:my-[5px]">
                                 <div className="flex flex-row w-[90%] md:flex-col s">
                                     <TextField
+                                        inputProps={{ style: { color: theme==="dark"?"white":"black",background:theme==="dark"?"#5e369d":"white" }}}
                                         sx={{
-                                            "& .MuiInputBase-root": {
-                                                color: 'white'
-                                            },
+                                            
                                             "& .MuiFormLabel-root": {
-                                                color: 'antiquewhite'
+                                                color: '#c2aaff'
                                             },
                                             "& .MuiFormLabel-root.Mui-focused": {
                                                 color: 'pink'
@@ -280,17 +276,16 @@ export const LoginPage = ()=>{
                                         variant="outlined"
                                         onChange={changeFirstName}
                                         className="flex-1"
-                                        style={{marginRight : width>760 ? "10px" : "0px",
-                                         backgroundColor: '#9868bb' }
+                                        style={{marginRight : width>760 ? "10px" : "0px"
+                                     }
                                     }
                                     />
                                     <TextField
+                                        inputProps={{ style: { color: theme==="dark"?"white":"black",background:theme==="dark"?"#5e369d":"white" }}}
                                         sx={{
-                                            "& .MuiInputBase-root": {
-                                                color: 'white'
-                                            },
+                                            
                                             "& .MuiFormLabel-root": {
-                                                color: 'antiquewhite'
+                                                color: '#c2aaff'
                                             },
                                             "& .MuiFormLabel-root.Mui-focused": {
                                                 color: 'pink'
@@ -314,18 +309,16 @@ export const LoginPage = ()=>{
                                         variant="outlined"
                                         onChange={changeLastName}
                                         className="flex-1"
-                                        style={{marginLeft : width>760 ? "10px" : "0px", backgroundColor: '#9868bb' 
+                                        style={{marginLeft : width>760 ? "10px" : "0px" 
                                     }}
                                     />
                                 </div>
                                 <TextField
-                                    style={{ backgroundColor: '#9868bb' }}
+                                    inputProps={{ style: { color: theme==="dark"?"white":"black",background:theme==="dark"?"#5e369d":"white" }}}
                                     sx={{
-                                        "& .MuiInputBase-root": {
-                                            color: 'white'
-                                        },
+                                        
                                         "& .MuiFormLabel-root": {
-                                            color: 'antiquewhite'
+                                            color: '#c2aaff'
                                         },
                                         "& .MuiFormLabel-root.Mui-focused": {
                                             color: 'pink'
@@ -351,13 +344,11 @@ export const LoginPage = ()=>{
                                     onChange={changeUsername}
                                 />
                                 <TextField
-                                    style={{ backgroundColor: '#9868bb' }}
+                                    inputProps={{ style: { color: theme==="dark"?"white":"black",background:theme==="dark"?"#5e369d":"white" }}}
                                     sx={{
-                                        "& .MuiInputBase-root": {
-                                            color: 'white'
-                                        },
+                                        
                                         "& .MuiFormLabel-root": {
-                                            color: 'antiquewhite'
+                                            color: '#c2aaff'
                                         },
                                         "& .MuiFormLabel-root.Mui-focused": {
                                             color: 'pink'
@@ -385,12 +376,11 @@ export const LoginPage = ()=>{
                                 />
                                 <div className="flex flex-row w-[90%] md:flex-col">
                                     <TextField
+                                        inputProps={{ style: { color: theme==="dark"?"white":"black",background:theme==="dark"?"#5e369d":"white" }}}
                                         sx={{
-                                            "& .MuiInputBase-root": {
-                                                color: 'white'
-                                            },
+                                            
                                             "& .MuiFormLabel-root": {
-                                                color: 'antiquewhite'
+                                                color: '#c2aaff'
                                             },
                                             "& .MuiFormLabel-root.Mui-focused": {
                                                 color: 'pink'
@@ -415,15 +405,15 @@ export const LoginPage = ()=>{
                                         variant="outlined"
                                         onChange={changePassword}
                                         className="flex-1"
-                                        style={{marginRight : width>760 ? "10px" : "0px", backgroundColor: '#9868bb' }}
+                                        style={{marginRight : width>760 ? "10px" : "0px"
+                                    }}
                                     />
                                     <TextField
+                                        inputProps={{ style: { color: theme==="dark"?"white":"black",background:theme==="dark"?"#5e369d":"white" }}}
                                         sx={{
-                                            "& .MuiInputBase-root": {
-                                                color: 'white'
-                                            },
+                                            
                                             "& .MuiFormLabel-root": {
-                                                color: 'antiquewhite'
+                                                color: '#c2aaff'
                                             },
                                             "& .MuiFormLabel-root.Mui-focused": {
                                                 color: 'pink'
@@ -448,7 +438,8 @@ export const LoginPage = ()=>{
                                         variant="outlined"
                                         onChange={changeConfirmPassword}
                                         className="flex-1"
-                                        style={{ marginLeft : width>760 ? "10px" : "0px", backgroundColor: '#9868bb' }}
+                                        style={{ marginLeft : width>760 ? "10px" : "0px"
+                                    }}
                                     />
                                 </div>
                                 <div className="flex homeText font-SourceSansPro flex-col mb-[55px] items-center md:mb-[10px]">

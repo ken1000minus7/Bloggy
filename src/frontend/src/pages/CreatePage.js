@@ -7,9 +7,10 @@ import writerAnimation from '../assets/writer.json'
 import {MarkdownText} from "../components/MarkdownText";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import PropTypes from 'prop-types';
 
 
-export const CreatePage = ()=>{
+export const CreatePage = ({theme})=>{
     let navigate = useNavigate()
 
     const [title,setTitle] = useState("")
@@ -84,17 +85,7 @@ export const CreatePage = ()=>{
             </div>
             <div className="loginForm mx-[20px] my-[10px] sm:mx-[10px]">
                 <TextField
-                    style={{ backgroundColor: '#9868bb' }}
                     sx={{
-                        "& .MuiInputBase-root": {
-                            color: 'white'
-                        },
-                        "& .MuiFormLabel-root": {
-                            color: 'antiquewhite'
-                        },
-                        "& .MuiFormLabel-root.Mui-focused": {
-                            color: 'pink'
-                        },
                         "& .MuiOutlinedInput-root": {
                         "& > fieldset": { borderColor: "none" },
                         },   
@@ -105,7 +96,7 @@ export const CreatePage = ()=>{
                         },
                         "& .MuiOutlinedInput-root.Mui-focused": {
                             "& > fieldset": {
-                              borderColor: "gray"
+                              borderColor: "rgb(202 175 252)"
                             }
                           }
                     }}
@@ -113,7 +104,7 @@ export const CreatePage = ()=>{
                     value={title}
                     placeholder="Title"
                     fullWidth
-                    inputProps={{ style :{textAlign : "center", fontWeight : "bold",color:"white", fontSize : width > 640 ? "30px" : "20px" , fontFamily : "serif", padding : "10px"}}}
+                    inputProps={{ style :{textAlign : "center", fontWeight : "bold", color: theme==="light"?"black":"white", fontSize : width > 640 ? "30px" : "20px" , fontFamily : "serif", padding : "10px"}}}
                     onChange={changeTitle}
                 />
             </div>
@@ -125,17 +116,7 @@ export const CreatePage = ()=>{
                 {
                     (value===0) ? (
                         <TextField
-                        style={{ backgroundColor: '#9868bb' }}
                         sx={{
-                            "& .MuiInputBase-root": {
-                                color: 'white'
-                            },
-                            "& .MuiFormLabel-root": {
-                                color: 'antiquewhite'
-                            },
-                            "& .MuiFormLabel-root.Mui-focused": {
-                                color: 'pink'
-                            },
                             "& .MuiOutlinedInput-root": {
                             "& > fieldset": { borderColor: "none" },
                             },   
@@ -146,7 +127,7 @@ export const CreatePage = ()=>{
                             },
                             "& .MuiOutlinedInput-root.Mui-focused": {
                                 "& > fieldset": {
-                                  borderColor: "gray"
+                                  borderColor: "rgb(202 175 252)"
                                 }
                               }
                         }}
@@ -155,13 +136,13 @@ export const CreatePage = ()=>{
                             rows={16}
                             fullWidth
                             onChange={changeContent}
-                            inputProps={{style : {fontSize : width > 640 ? "16px" : "14px"}}}
+                            inputProps={{style : {fontSize : width > 640 ? "16px" : "14px", color: theme==="dark"?"white":"black"}}}
                             placeholder="Your blog"
                             border="2px solid white"
                         />
                     ) : (
                         <MarkdownText
-                            className="blog bg-[#9868bb] text-white text-left p-[15px] text-[17px] overflow-y-auto h-[100%] w-[100%] sm:[15px]"
+                            className="blog text-white text-left p-[15px] text-[17px] overflow-y-auto h-[100%] w-[100%] sm:[15px]"
                         >
                             {content}
                         </MarkdownText>
@@ -172,7 +153,7 @@ export const CreatePage = ()=>{
                 <Button
                 className="createButton"
                     onClick={handleCreate}
-                    style={{fontSize : width> 640 ? "22px" : "15px", margin : "15px", color:"purple", border:"1px solid purple"}}
+                    style={{fontSize : width> 640 ? "22px" : "15px", margin : "15px", color:"purple", border: theme==="dark"?"2px solid purple":"1px solid purple"}}
                     variant="outlined"
                 >
                     Create

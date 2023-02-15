@@ -6,8 +6,9 @@ import searchAnim from '../assets/search.json'
 import notFoundAnim from '../assets/notfound.json'
 import searchingAnim from '../assets/searchanimation.json'
 import Lottie from "react-lottie-player";
+import PropTypes from 'prop-types';
 
-export const SearchPage = ()=>{
+export const SearchPage = ({theme})=>{
     const [query,setQuery] = useState("")
     const [searching,setSearching] = useState(false)
     const [resultList,setResultList] = useState([])
@@ -38,17 +39,8 @@ export const SearchPage = ()=>{
             </div>
             <div className="loginForm flex flex-row items-center w-[50%] sm:w-[90%]" >
                 <TextField
-                    style={{ backgroundColor: '#d4a7d5' }}
+                    inputProps={{ style: { color: theme==="dark"?"white":"black" }}}
                     sx={{
-                        "& .MuiInputBase-root": {
-                            color: 'purple'
-                        },
-                        "& .MuiFormLabel-root": {
-                            color: 'gray'
-                        },
-                        "& .MuiFormLabel-root.Mui-focused": {
-                            color: 'pink'
-                        },
                         "& .MuiOutlinedInput-root": {
                         "& > fieldset": { borderColor: "none" },
                         },   
@@ -59,7 +51,7 @@ export const SearchPage = ()=>{
                         },
                         "& .MuiOutlinedInput-root.Mui-focused": {
                             "& > fieldset": {
-                              borderColor: "gray"
+                              borderColor: "rgb(202 175 252)"
                             }
                           }
                     }}
