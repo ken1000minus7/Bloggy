@@ -225,5 +225,12 @@
     #dark .createButton:hover{
         background-color: white;
     }
-    
+    #dark .blogCard{
+        color: white;
+        background-color: #4f2a82;
+    }
+    #dark .blogCardAuthor{
+        color: white;
+        background-color: #3b1c68;
+    }
 }

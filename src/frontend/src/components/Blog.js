@@ -4,7 +4,8 @@ import { Link } from "react-router-dom";
 import { MarkdownText } from "./MarkdownText";
 import { DeleteDialog } from "./DeleteDialog";
 import {useNavigate} from "react-router";
-export const Blog = ({ blog}) => {
+import PropTypes from 'prop-types';
+export const Blog = ({blog}) => {
 
     const username = localStorage.getItem("username") || ""
     const [deleteOpen, setDeleteOpen] = useState(false)
@@ -13,17 +14,16 @@ export const Blog = ({ blog}) => {
   return (
     <Fade triggerOnce cascade className="blog flex flex-col my-[10px] items-center">
       <div className="flex ">
-        <div className="font-serif font-bold text-[60px] text-center md:text-[50px] pr-4">
-            {blog.title} 
+        <div className="font-itim homeText font-bold text-[60px] text-center md:text-[50px] pr-4">
+        Just blogging    {/* {blog.title}  */}
         </div>
       </div>
-      <div className="font-light text-[15px] text-center mb-0">
-        By <Link to={`/user/${blog.author.username}`} className="hover:text-cyan-500 duration-[300ms]">
-          {blog.author.firstName + " " + blog.author.lastName}</Link><br />
-        {new Date(blog.creationTime).toDateString()}
+      <div className="font-light homeText text-[15px] text-center mb-0">
+        By Nikhil <br />
+       
       </div>
       <div className = "flex justify-center items-center">
-      <div className="mt-6">
+      <div className="mt-6 homeText">
           <button type="button" class="-rotate-90 border border-green-700 hover:bg-green-400 rounded-md p-2.5  inline-flex items-center  hover:text-white mr-4 hover:scale-[1.05] hover:duration-200">
             <svg aria-hidden="true" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
             <path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd"></path>
@@ -37,16 +37,18 @@ export const Blog = ({ blog}) => {
           </button>
         </div>
       </div>
-      <MarkdownText className="text-[18px] text-start my-[10px] text-left w-[100%] px-[20px] md:text-[15px]">{blog.content} 
+      <MarkdownText className="text-[18px] text-start my-[10px] homeText w-[100%] px-[20px] md:text-[15px]">
+        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Mollitia excepturi laboriosam, quos voluptates debitis dolore molestiae corrupti officiis! Repellendus quas debitis odio ea nam earum fuga a? Esse assumenda vero, in provident modi magnam molestias maxime recusandae ipsa saepe ratione laudantium voluptates, labore neque incidunt rerum quaerat. Illo, optio ex.
+        {/* {blog.content}  */}
       </MarkdownText>
 
       {
-        username === blog.author.username ? (
+         (
             <div>
                 <button onClick={() => {
                     setDeleteOpen(true);
-                }} type="button" className="border border-red-700 hover:bg-red-400 rounded-md p-2.5  inline-flex items-center hover:text-white hover:scale-[1.05] hover:duration-200">
-                    <svg className="w-5 h-5" fill="#000000" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg"
+                }} type="button" className="bg-red-100 border border-red-700 hover:bg-red-400 rounded-md p-2.5  inline-flex items-center hover:text-white hover:scale-[1.05] hover:duration-200">
+                    <svg className="w-5 h-5" fill="black" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg"
                         width="800px" height="800px" viewBox="0 0 482.428 482.429">
                         <g>
                             <g>
@@ -68,7 +70,7 @@ export const Blog = ({ blog}) => {
                         </g>
                     </svg>
                 </button>
-                <DeleteDialog open={deleteOpen} setOpen={setDeleteOpen} id={blog.id} />
+                <DeleteDialog open={deleteOpen} setOpen={setDeleteOpen} id={1} />
                 <button onClick={()=>{
                    if(localStorage.getItem("username")){
                                     navigate(`/update/${blog.id}`)
@@ -76,10 +78,10 @@ export const Blog = ({ blog}) => {
                                 else{
                                     navigate('/login')
                                 }
-                }} class="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded">
+                }} class="bg-blue-500 homeText bg-transparent hover:bg-blue-600 text-white font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded mx-2">
                 Update The Blog
                 </button>
-            </div> ) : ( <></> )
+            </div> )
       }
     </Fade>
   );
