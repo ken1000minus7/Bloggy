@@ -3,21 +3,12 @@ import {useNavigate} from "react-router";
 import {Button, Dialog, DialogContent} from "@mui/material";
 import logoutAnim from '../assets/logout.json'
 import Lottie from "react-lottie-player";
+import useWindowSize from "../hooks/useWindowSize";
 
 export const LogoutDialog = ({open,setOpen})=>{
     let navigate = useNavigate()
 
-    const [width,setWidth] = useState(window.innerWidth)
-
-    useEffect(()=>{
-        const handleWidth = ()=>{
-            setWidth(window.innerWidth)
-        }
-        window.addEventListener("resize",handleWidth)
-        return ()=>{
-            window.removeEventListener("resize",handleWidth)
-        }
-    })
+    const {width} = useWindowSize();
 
     const handleLogout = ()=>{
         localStorage.removeItem("jwtToken")
