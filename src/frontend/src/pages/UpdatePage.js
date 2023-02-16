@@ -12,6 +12,7 @@ import { useParams } from "react-router";
 
 import {useNavigate} from "react-router";
 import {LoadingDialog} from "../components/LoadingDialog";
+import useWindowSize from "../hooks/useWindowSize";
 export const UpdatePage= ()=>{
 
     
@@ -23,17 +24,8 @@ export const UpdatePage= ()=>{
     const [title,setTitle] = useState("")
     const [content,setContent] = useState("")
     const [value,setValue] = useState(0)
-    const [width,setWidth] = useState(window.innerWidth)
+    const {width} = useWindowSize();
 
-    useEffect(()=>{
-        const handleWidth = ()=>{
-            setWidth(window.innerWidth)
-        }
-        window.addEventListener("resize",handleWidth)
-        return ()=>{
-            window.removeEventListener("resize",handleWidth)
-        }
-    })
     useEffect(()=>{
         setLoading(true)
         axios.get(`${process.env.REACT_APP_API_BASE_URL}/blog/${id}`,{

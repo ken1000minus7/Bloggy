@@ -4,21 +4,12 @@ import { Button, Dialog, DialogContent } from "@mui/material";
 import deleteAnim from '../assets/delete.json'
 import Lottie from "react-lottie-player";
 import axios from "axios";
+import useWindowSize from "../hooks/useWindowSize";
 
 export const DeleteDialog = ({ open, setOpen, id }) => {
     let navigate = useNavigate()
 
-    const [width, setWidth] = useState(window.innerWidth)
-
-    useEffect(() => {
-        const handleWidth = () => {
-            setWidth(window.innerWidth)
-        }
-        window.addEventListener("resize", handleWidth)
-        return () => {
-            window.removeEventListener("resize", handleWidth)
-        }
-    })
+    const {width} = useWindowSize();
 
     const handleDelete = () => {
         axios({

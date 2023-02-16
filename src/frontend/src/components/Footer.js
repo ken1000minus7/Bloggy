@@ -1,9 +1,10 @@
 import  React, {useState} from 'react'
 import { Link } from 'react-router-dom';
 import logo from '../assets/logo.png'
+import useWindowSize from '../hooks/useWindowSize';
 
 const Footer = () => {
-    const [width,setWidth] = useState(window.innerWidth)
+    const {width} = useWindowSize();
     return (
 
         <footer className="text-center footerText lg:text-left bg-[#ede7f6] font-serif mt-[20px]">

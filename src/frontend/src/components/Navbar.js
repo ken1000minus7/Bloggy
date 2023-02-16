@@ -8,6 +8,7 @@ import {LogoutDialog} from "./LogoutDialog";
 import logo from '../assets/logo.png'
 import { Switch } from "@mui/material";
 import PropTypes from 'prop-types';
+import useWindowSize from "../hooks/useWindowSize";
 import { createContext } from "react";
 export const ThemeContext = createContext(null);
 
@@ -30,17 +31,7 @@ export const Navbar = (props)=>{
         }
     },[])
 
-    const [width,setWidth] = useState(window.innerWidth)
-
-    useEffect(()=>{
-        const handleWidth = ()=>{
-            setWidth(window.innerWidth)
-        }
-        window.addEventListener("resize",handleWidth)
-        return ()=>{
-            window.removeEventListener("resize",handleWidth)
-        }
-    })
+    const {width} = useWindowSize();
 
     const changeMenuOpen = (event)=>{
         setAnchor(event.currentTarget)

@@ -12,6 +12,7 @@ import axios from "axios";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import PropTypes from 'prop-types';
+import useWindowSize from "../hooks/useWindowSize";
 
 export const LoginPage = ({theme})=>{
     let navigate = useNavigate()
@@ -20,17 +21,7 @@ export const LoginPage = ({theme})=>{
         navigate("/")
     }
 
-    const [width,setWidth] = useState(window.innerWidth)
-
-    useEffect(()=>{
-        const handleWidth = ()=>{
-            setWidth(window.innerWidth)
-        }
-        window.addEventListener("resize",handleWidth)
-        return ()=>{
-            window.removeEventListener("resize",handleWidth)
-        }
-    })
+    const {width} = useWindowSize();
 
     const [value,setValue] = useState(0)
 
