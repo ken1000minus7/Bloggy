@@ -15,6 +15,9 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 import { createContext, useState } from "react";
+import SettingSidebar from "./components/SettingSidebar";
+import EditProfilePage from "./pages/EditProfilePage";
+import EditAccountPage from "./pages/EditAccountPage";
 export const ThemeContext = createContext(null);
 
 function App() {
@@ -38,6 +41,8 @@ function App() {
                 <Route exact path="/update/:id" element={<UpdatePage/>} />
                 <Route exact path="/user/:username" element={<ProfilePage />} />
                 <Route exact path="/search" element={<SearchPage theme={theme} />} />
+                <Route exact path="/settings/profile" element={<EditProfilePage/>}/>
+                <Route exact path="/settings/account" element={<EditAccountPage/>}/>
                 <Route exact path="*" element={<NotFound />} />
             </Routes>
             <Footer/>

@@ -8,7 +8,10 @@ import {LogoutDialog} from "./LogoutDialog";
 import logo from '../assets/logo.png'
 import { Switch } from "@mui/material";
 import PropTypes from 'prop-types';
+import useWindowSize from "../hooks/useWindowSize";
 import { createContext } from "react";
+import SettingsIcon from '@mui/icons-material/Settings';
+
 export const ThemeContext = createContext(null);
 
 export const Navbar = (props)=>{
@@ -30,17 +33,7 @@ export const Navbar = (props)=>{
         }
     },[])
 
-    const [width,setWidth] = useState(window.innerWidth)
-
-    useEffect(()=>{
-        const handleWidth = ()=>{
-            setWidth(window.innerWidth)
-        }
-        window.addEventListener("resize",handleWidth)
-        return ()=>{
-            window.removeEventListener("resize",handleWidth)
-        }
-    })
+    const {width} = useWindowSize();
 
     const changeMenuOpen = (event)=>{
         setAnchor(event.currentTarget)
@@ -103,6 +96,12 @@ export const Navbar = (props)=>{
                                 setLogoutOpen(true)
                             }}>
                                 <Logout className="mr-[10px] font-SourceSansPro"/> Logout
+                            </MenuItem>
+                            <MenuItem onClick={()=>{
+                                setMenuOpen(false)
+                                navigate('/settings/profile')
+                            }}>
+                               <SettingsIcon className="mr-[10px] font-SourceSansPro"/> Settings 
                             </MenuItem>
                         </Menu>
                         <LogoutDialog open={logoutOpen} setOpen={setLogoutOpen} />
