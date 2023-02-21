@@ -18,7 +18,7 @@ const SettingSidebar = () => {
         {console.log({current})}
             <div className="w-20% bg-[#ede7f6] shadow-xl rounded-lg flex overflow-x-auto custom-scrollbar">
                     <div className=''>
-                    <ul className="list-none">
+                    <ul className="list-none" style={{'padding-left':"0px"}}>
                             <SidebarItem to="/settings/profile" title="Profile" icon={<AccountCircleIcon fontSize={(width>830 || width<600 ? "medium" : "large")} />}/> 
                             <SidebarItem to="/settings/account" title="Account" icon={<SettingsIcon fontSize={(width>830 || width<600 ? "medium" : "large")}/>} />
                     </ul>

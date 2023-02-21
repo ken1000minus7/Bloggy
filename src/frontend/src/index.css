@@ -57,6 +57,7 @@
         display: block;
         list-style-type: disc;
         margin: 1em 0 1em;
+        padding-left: 40px;
     }
 
     li {

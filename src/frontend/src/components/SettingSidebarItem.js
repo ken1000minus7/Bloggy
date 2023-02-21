@@ -1,19 +1,9 @@
 import React, {useEffect, useState} from "react";
 import {Link} from "react-router-dom";
-
+import { useWindowSize, useWindowWidth} from '@react-hook/window-size'
 export const SidebarItem = ({to,icon,title})=>{
 
-    const [width,setWidth] = useState(window.innerWidth)
-
-    useEffect(()=>{
-        const handleWidth = ()=>{
-            setWidth(window.innerWidth)
-        }
-        window.addEventListener("resize",handleWidth)
-        return ()=>{
-            window.removeEventListener("resize",handleWidth)
-        }
-    })
+   const width = useWindowWidth();
     const current = title.toLowerCase();
     console.log(current);
     const curr = window.location.pathname;
