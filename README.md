@@ -50,7 +50,12 @@ _Below is an example of how you can install and set up your app._
    ```
 2. Setting up the backend
 - Create a PostgreSQL database named `bloggy`
-- Update the database credentials in `src/main/resources/application.properties` file
+- Create a `.env` file in the root directory and fill the environment variables using your database credentials. Example
+  ```
+  BLOGGY_DB_URL=jdbc:postgresql://localhost:5432/bloggy
+  BLOGGY_DB_USERNAME=postgres
+  BLOGGY_DB_PASSWORD=password
+  ```
 - Build the project using maven
    ```bash
    mvn clean install
