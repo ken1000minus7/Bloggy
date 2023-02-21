@@ -4,9 +4,10 @@ import { useLocation } from 'react-router-dom';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import SettingsIcon from '@mui/icons-material/Settings';
 import { SidebarItem } from './SettingSidebarItem';
+import { useWindowSize, useWindowWidth} from '@react-hook/window-size'
 
 const SettingSidebar = () => {
-    const [width,setWidth] = useState(window.innerWidth)
+    const width = useWindowWidth();
     const [username,setUsername] = useState(localStorage.getItem("username"))
 
     const location = useLocation();
