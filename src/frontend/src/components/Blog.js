@@ -4,6 +4,8 @@ import { Link } from "react-router-dom";
 import { MarkdownText } from "./MarkdownText";
 import {Button, Tab, Tabs, TextField} from "@mui/material";
 import { DeleteDialog } from "./DeleteDialog";
+
+import axios from "axios";
 import {useNavigate} from "react-router";
 
 import { ToastContainer, toast } from 'react-toastify';
@@ -16,7 +18,7 @@ export const Blog = ({ blog,comments}) => {
     let navigate = useNavigate()
     async function postComment(){
       axios({
-          url : `${process.env.REACT_APP_API_BASE_URL}/user/${localStorage.getItem("username")}/blog/${id}/comment`,
+          url : `${process.env.REACT_APP_API_BASE_URL}/user/${localStorage.getItem("username")}/blog/${blog.id}/comment`,
           method : "POST",
           headers : {
               "Content-Type" : "application/json",
@@ -74,11 +76,10 @@ export const Blog = ({ blog,comments}) => {
             {commentArray}
           </ul>
            <TextField
-                    variant="outlined"
+                   
                     value={comment}
-                    placeholder="Title"
-                    fullWidth
-                    inputProps={{ style :{textAlign : "center", fontWeight : "bold", color: theme==="light"?"black":"white", fontSize : width > 640 ? "30px" : "20px" , fontFamily : "serif", padding : "10px"}}}
+                    placeholder="Comment"
+
                     onChange={(event)=>{
                       setComment(event.target.value);
                     }}
