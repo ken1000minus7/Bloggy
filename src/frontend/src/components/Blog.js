@@ -2,14 +2,44 @@ import React, { useState } from "react";
 import { Fade } from "react-awesome-reveal";
 import { Link } from "react-router-dom";
 import { MarkdownText } from "./MarkdownText";
+import {Button, Tab, Tabs, TextField} from "@mui/material";
 import { DeleteDialog } from "./DeleteDialog";
 import {useNavigate} from "react-router";
-export const Blog = ({ blog}) => {
+
+import { ToastContainer, toast } from 'react-toastify';
+export const Blog = ({ blog,comments}) => {
 
     const username = localStorage.getItem("username") || ""
     const [deleteOpen, setDeleteOpen] = useState(false)
-
+    const [comment,setComment]=useState("");
+ 
     let navigate = useNavigate()
+    async function postComment(){
+      axios({
+          url : `${process.env.REACT_APP_API_BASE_URL}/user/${localStorage.getItem("username")}/blog/${id}/comment`,
+          method : "POST",
+          headers : {
+              "Content-Type" : "application/json",
+              "Authorization" : `Bearer ${localStorage.getItem("jwtToken")}`
+          },
+          data : {
+              "content" : comment
+          }
+      })
+          .then(()=>{
+              navigate(`/blog/${blog.id}`)
+          })
+          .catch(error=>{
+              console.log(error)
+              toast.error(error.response.data, {
+                  position: toast.POSITION.TOP_CENTER
+              });
+          })
+        }
+     const commentArray=[]
+     comments.forEach(element => {
+      commentArray.push(<li>{element}</li>)
+     });
   return (
     <Fade triggerOnce cascade className="blog flex flex-col my-[10px] items-center">
       <div className="flex ">
@@ -39,7 +69,26 @@ export const Blog = ({ blog}) => {
       </div>
       <MarkdownText className="homeText text-[18px] text-start my-[10px] w-[100%] px-[20px] md:text-[15px]">{blog.content} 
       </MarkdownText>
-
+//all comments will be show
+          <ul>
+            {commentArray}
+          </ul>
+           <TextField
+                    variant="outlined"
+                    value={comment}
+                    placeholder="Title"
+                    fullWidth
+                    inputProps={{ style :{textAlign : "center", fontWeight : "bold", color: theme==="light"?"black":"white", fontSize : width > 640 ? "30px" : "20px" , fontFamily : "serif", padding : "10px"}}}
+                    onChange={(event)=>{
+                      setComment(event.target.value);
+                    }}
+                />
+            <Button
+               onClick={postComment}
+                >
+                    Comment
+                </Button>
+       
       {
         username === blog.author.username ? (
             <div>
