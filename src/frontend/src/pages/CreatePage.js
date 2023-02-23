@@ -142,7 +142,7 @@ export const CreatePage = ({theme})=>{
                         />
                     ) : (
                         <MarkdownText
-                            className="blog text-white text-left p-[15px] text-[17px] overflow-y-auto h-[100%] w-[100%] sm:[15px]"
+                            className="blog text-left p-[15px] text-[17px] overflow-y-auto h-[100%] w-[100%] sm:[15px]"
                         >
                             {content}
                         </MarkdownText>
