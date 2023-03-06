@@ -1,16 +1,16 @@
-import React, {useEffect, useState} from "react";
-import {useNavigate} from "react-router";
-import {Button, Dialog, DialogContent} from "@mui/material";
+import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router";
+import { Button, Dialog, DialogContent } from "@mui/material";
 import logoutAnim from '../assets/logout.json'
 import Lottie from "react-lottie-player";
 import useWindowSize from "../hooks/useWindowSize";
 
-export const LogoutDialog = ({open,setOpen})=>{
+export const LogoutDialog = ({ open, setOpen }) => {
     let navigate = useNavigate()
 
-    const {width} = useWindowSize();
+    const { width } = useWindowSize();
 
-    const handleLogout = ()=>{
+    const handleLogout = () => {
         localStorage.removeItem("jwtToken")
         localStorage.removeItem("username")
         window.dispatchEvent(new Event("storage"))
@@ -18,7 +18,7 @@ export const LogoutDialog = ({open,setOpen})=>{
         navigate("/")
     }
 
-    const handleCancel = ()=>{
+    const handleCancel = () => {
         setOpen(false)
     }
     return (
@@ -40,14 +40,14 @@ export const LogoutDialog = ({open,setOpen})=>{
                 <div className="flex flex-row justify-evenly w-[100%] mt-[20px]">
                     <Button
                         onClick={handleLogout}
-                        style={{fontSize : width<640 ? "15px" : "20px"}}
+                        style={{ fontSize: width < 640 ? "15px" : "20px" }}
                         variant="outlined"
                     >
                         Yes
                     </Button>
                     <Button
                         onClick={handleCancel}
-                        style={{fontSize : width<640 ? "15px" : "20px"}}
+                        style={{ fontSize: width < 640 ? "15px" : "20px" }}
                         variant="outlined"
                     >
                         No
