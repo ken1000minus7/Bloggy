@@ -11,7 +11,7 @@ import PropTypes from 'prop-types';
 import CreateDialog from "../components/CreateDialog";
 
 
-export const CreatePage = ({ theme }) => {
+export const CreatePage = ({theme}) => {
 
     const [createOpen, setCreateOpen] = useState(false)
     const [title, setTitle] = useState("")
@@ -19,57 +19,27 @@ export const CreatePage = ({ theme }) => {
     const [value, setValue] = useState(0)
     const [width, setWidth] = useState(window.innerWidth)
 
-    useEffect(() => {
-        const handleWidth = () => {
+    useEffect(()=>{
+        const handleWidth = ()=>{
             setWidth(window.innerWidth)
         }
-        window.addEventListener("resize", handleWidth)
-        return () => {
-            window.removeEventListener("resize", handleWidth)
+        window.addEventListener("resize",handleWidth)
+        return ()=>{
+            window.removeEventListener("resize",handleWidth)
         }
     })
 
-    const changeTitle = (event) => {
+    const changeTitle = (event)=>{
         setTitle(event.target.value)
     }
 
-    const changeContent = (event) => {
+    const changeContent = (event)=>{
         setContent(event.target.value)
     }
 
-    const changeValue = (event, newValue) => {
+    const changeValue = (event,newValue)=>{
         setValue(newValue)
     }
-
-    // const handleCreate = ()=>{
-    //     if(title==="" || content===""){
-    //             toast.error("One or more fields are empty", {
-    //             position: toast.POSITION.TOP_CENTER
-    //         });
-    //         return
-    //     }
-    //     axios({
-    //         url : `${process.env.REACT_APP_API_BASE_URL}/user/${localStorage.getItem("username")}/blog`,
-    //         method : "POST",
-    //         headers : {
-    //             "Content-Type" : "application/json",
-    //             "Authorization" : `Bearer ${localStorage.getItem("jwtToken")}`
-    //         },
-    //         data : {
-    //             "title" : title,
-    //             "content" : content
-    //         }
-    //     })
-    //         .then(response=>{
-    //             navigate(`/blog/${response.data}`)
-    //         })
-    //         .catch(error=>{
-    //             console.log(error)
-    //             toast.error(error.response.data, {
-    //                 position: toast.POSITION.TOP_CENTER
-    //             });
-    //         })
-    // }
 
     return (
         <div>
@@ -82,22 +52,22 @@ export const CreatePage = ({ theme }) => {
                     loop
                     animationData={writerAnimation}
                     className="h-[80px] md:h-[150px] sm:h-[100px]"
-                />
+                    />
             </div>
             <div className="loginForm mx-[20px] my-[10px] sm:mx-[10px]">
                 <TextField
                     sx={{
                         "& .MuiOutlinedInput-root": {
-                            "& > fieldset": { borderColor: "none" },
+                        "& > fieldset": { borderColor: "none" },
                         },
                         "& .MuiOutlinedInput-root:hover": {
-                            "& > fieldset": {
-                                borderColor: "pink"
-                            }
+                          "& > fieldset": {
+                            borderColor: "pink"
+                          }
                         },
                         "& .MuiOutlinedInput-root.Mui-focused": {
                             "& > fieldset": {
-                                borderColor: "rgb(202 175 252)"
+                              borderColor: "rgb(202 175 252)"
                             }
                         }
                     }}
@@ -105,7 +75,7 @@ export const CreatePage = ({ theme }) => {
                     value={title}
                     placeholder="Title"
                     fullWidth
-                    inputProps={{ style: { textAlign: "center", fontWeight: "bold", color: theme === "light" ? "black" : "white", fontSize: width > 640 ? "30px" : "20px", fontFamily: "serif", padding: "10px" } }}
+                    inputProps={{ style :{textAlign : "center", fontWeight : "bold", color: theme==="light"?"black":"white", fontSize : width > 640 ? "30px" : "20px" , fontFamily : "serif", padding : "10px"}}}
                     onChange={changeTitle}
                 />
             </div>
@@ -115,7 +85,7 @@ export const CreatePage = ({ theme }) => {
                     <Tab label="Preview" />
                 </Tabs>
                 {
-                    (value === 0) ? (
+                    (value===0) ? (
                         <TextField
                             sx={{
                                 "& .MuiOutlinedInput-root": {
@@ -137,7 +107,7 @@ export const CreatePage = ({ theme }) => {
                             rows={16}
                             fullWidth
                             onChange={changeContent}
-                            inputProps={{ style: { fontSize: width > 640 ? "16px" : "14px", color: theme === "dark" ? "white" : "black" } }}
+                            inputProps={{style : {fontSize : width > 640 ? "16px" : "14px", color: theme==="dark"?"white":"black"}}}
                             placeholder="Your blog"
                             border="2px solid white"
                         />
@@ -153,8 +123,8 @@ export const CreatePage = ({ theme }) => {
             <center>
                 <Button
                     className="createButton"
-                    onClick={() => setCreateOpen(true)}
-                    style={{ fontSize: width > 640 ? "22px" : "15px", margin: "15px", color: "purple", border: theme === "dark" ? "2px solid purple" : "1px solid purple" }}
+                    onClick={()=>setCreateOpen(true)}
+                    style={{fontSize : width> 640 ? "22px" : "15px", margin : "15px", color:"purple", border: theme==="dark"?"2px solid purple":"1px solid purple"}}
                     variant="outlined"
                 >
                     Create
