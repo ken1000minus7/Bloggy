@@ -5,10 +5,11 @@ import axios from "axios";
 import { useNavigate } from "react-router";
 import { ToastContainer, toast } from 'react-toastify';
 import logoutAnim from "../assets/create.json"
+import { useWindowSize } from '@react-hook/window-size';
 function CreateDialog({ open, setOpen, title, content }) {
     let navigate = useNavigate()
 
-
+    const { width } = useWindowSize();
 
     const handleCancel = () => {
         setOpen(false)
