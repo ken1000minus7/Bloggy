@@ -1,10 +1,10 @@
-import React, {useEffect, useState} from "react";
-import {Link} from "react-router-dom";
-import {Avatar, Button, Menu, MenuItem} from "@mui/material";
-import {NavbarItem} from "./NavbarItem";
-import {AccountBox, Add, Home, Logout, Search} from "@mui/icons-material";
-import {useNavigate} from "react-router";
-import {LogoutDialog} from "./LogoutDialog";
+import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
+import { Avatar, Button, Menu, MenuItem } from "@mui/material";
+import { NavbarItem } from "./NavbarItem";
+import { AccountBox, Add, Home, Logout, Search } from "@mui/icons-material";
+import { useNavigate } from "react-router";
+import { LogoutDialog } from "./LogoutDialog";
 import logo from '../assets/logo.png'
 import { Switch } from "@mui/material";
 import PropTypes from 'prop-types';
@@ -14,28 +14,28 @@ import SettingsIcon from '@mui/icons-material/Settings';
 
 export const ThemeContext = createContext(null);
 
-export const Navbar = (props)=>{
+export const Navbar = (props) => {
     let navigate = useNavigate()
 
-    const [username,setUsername] = useState(localStorage.getItem("username"))
-    const [menuOpen,setMenuOpen] = useState(false)
-    const [logoutOpen,setLogoutOpen] = useState(false)
-    const [anchor,setAnchor] = useState(null)
+    const [username, setUsername] = useState(localStorage.getItem("username"))
+    const [menuOpen, setMenuOpen] = useState(false)
+    const [logoutOpen, setLogoutOpen] = useState(false)
+    const [anchor, setAnchor] = useState(null)
 
-    useEffect(()=>{
-        const handleStorage = ()=>{
+    useEffect(() => {
+        const handleStorage = () => {
             setUsername(localStorage.getItem("username"))
             console.log(username)
         }
-        window.addEventListener("storage",handleStorage)
-        return ()=>{
-            window.removeEventListener("storage",handleStorage)
+        window.addEventListener("storage", handleStorage)
+        return () => {
+            window.removeEventListener("storage", handleStorage)
         }
-    },[])
+    }, [])
 
-    const {width} = useWindowSize();
+    const { width } = useWindowSize();
 
-    const changeMenuOpen = (event)=>{
+    const changeMenuOpen = (event) => {
         setAnchor(event.currentTarget)
         setMenuOpen(!menuOpen)
     }
@@ -43,9 +43,9 @@ export const Navbar = (props)=>{
     return (
         <div className="Navbar flex flex-row items-center shadow-[rgba(99,99,99,0.2)_0_2px_8px_0] bg-[#ede7f6]">
             <Link to="/home" className="font-bold m-[10px] text-[36px] font-serif sm:m-[5px] sm:text-[25px] flex flex-row items-center">
-                <img src={logo}  alt={"Bloggy"} className="h-[38px] sm:h-[30px]"/>
+                <img src={logo} alt={"Bloggy"} className="h-[38px] sm:h-[30px]" />
                 {
-                    width >640 && (
+                    width > 640 && (
                         <div className="ml-[5px] font-itim NavbarItemText">
                             Bloggy
                         </div>
@@ -54,9 +54,9 @@ export const Navbar = (props)=>{
 
             </Link>
             <div className="flex flex-auto flex-row mx-[10px] sm:mx-0 sm:justify-evenly">
-                <NavbarItem to="/home" title="Home" icon={<Home fontSize={(width>830 || width<600 ? "medium" : "large")}/>} />
-                <NavbarItem to="/search" title="Search" icon={<Search fontSize={(width>830 || width<600 ? "medium" : "large")}/>} />
-                <NavbarItem to={`/${username ? "create" : "login"}`} title="Create" icon={<Add fontSize={(width>830 || width<600 ? "medium" : "large")}/>}/>
+                <NavbarItem to="/home" title="Home" icon={<Home fontSize={(width > 830 || width < 600 ? "medium" : "large")} />} />
+                <NavbarItem to="/search" title="Search" icon={<Search fontSize={(width > 830 || width < 600 ? "medium" : "large")} />} />
+                <NavbarItem to={`/${username ? "create" : "login"}`} title="Create" icon={<Add fontSize={(width > 830 || width < 600 ? "medium" : "large")} />} />
             </div>
             <Switch onChange={props.toggleTheme} checked={props.theme === "dark"} className="m-[10px] sm:m-0" />
             {
@@ -65,13 +65,13 @@ export const Navbar = (props)=>{
                         <Button
                             onClick={changeMenuOpen}
                             style={{
-                                display : "flex",
-                                flexDirection : "row",
-                                textTransform : "none",
-                                justifyContent : "space-evenly",
-                                borderRadius : "18px",
-                                "&:hover" : {
-                                    boxShadow : "rgba(60,64,67,0.3) 0 1px 2px 0,rgba(60,64,67,0.15) 0 2px 6px 2px"
+                                display: "flex",
+                                flexDirection: "row",
+                                textTransform: "none",
+                                justifyContent: "space-evenly",
+                                borderRadius: "18px",
+                                "&:hover": {
+                                    boxShadow: "rgba(60,64,67,0.3) 0 1px 2px 0,rgba(60,64,67,0.15) 0 2px 6px 2px"
                                 }
                             }}
                         >
@@ -85,23 +85,23 @@ export const Navbar = (props)=>{
                             onClose={changeMenuOpen}
                             anchorEl={anchor}
                         >
-                            <MenuItem onClick={()=>{
+                            <MenuItem onClick={() => {
                                 setMenuOpen(false)
                                 navigate(`/user/${username}`)
                             }}>
-                                <AccountBox className="mr-[10px] font-SourceSansPro"/> Profile
+                                <AccountBox className="mr-[10px] font-SourceSansPro" /> Profile
                             </MenuItem>
-                            <MenuItem onClick={()=>{
+                            <MenuItem onClick={() => {
                                 setMenuOpen(false)
                                 setLogoutOpen(true)
                             }}>
-                                <Logout className="mr-[10px] font-SourceSansPro"/> Logout
+                                <Logout className="mr-[10px] font-SourceSansPro" /> Logout
                             </MenuItem>
-                            <MenuItem onClick={()=>{
+                            <MenuItem onClick={() => {
                                 setMenuOpen(false)
                                 navigate('/settings/profile')
                             }}>
-                               <SettingsIcon className="mr-[10px] font-SourceSansPro"/> Settings 
+                                <SettingsIcon className="mr-[10px] font-SourceSansPro" /> Settings
                             </MenuItem>
                         </Menu>
                         <LogoutDialog open={logoutOpen} setOpen={setLogoutOpen} />
