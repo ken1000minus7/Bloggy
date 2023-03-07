@@ -1,22 +1,23 @@
-import React, {useEffect, useState} from "react";
-import {Button, Tab, Tabs, TextField} from "@mui/material";
+import React, { useEffect, useState } from "react";
+import { Button, Tab, Tabs, TextField } from "@mui/material";
 import axios from "axios";
-import {useNavigate} from "react-router";
+import { useNavigate } from "react-router";
 import Lottie from "react-lottie-player";
 import writerAnimation from '../assets/writer.json'
-import {MarkdownText} from "../components/MarkdownText";
+import { MarkdownText } from "../components/MarkdownText";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import PropTypes from 'prop-types';
+import CreateDialog from "../components/CreateDialog";
 
 
-export const CreatePage = ({theme})=>{
-    let navigate = useNavigate()
+export const CreatePage = ({theme}) => {
 
-    const [title,setTitle] = useState("")
-    const [content,setContent] = useState("")
-    const [value,setValue] = useState(0)
-    const [width,setWidth] = useState(window.innerWidth)
+    const [createOpen, setCreateOpen] = useState(false)
+    const [title, setTitle] = useState("")
+    const [content, setContent] = useState("")
+    const [value, setValue] = useState(0)
+    const [width, setWidth] = useState(window.innerWidth)
 
     useEffect(()=>{
         const handleWidth = ()=>{
@@ -40,36 +41,6 @@ export const CreatePage = ({theme})=>{
         setValue(newValue)
     }
 
-    const handleCreate = ()=>{
-        if(title==="" || content===""){
-                toast.error("One or more fields are empty", {
-                position: toast.POSITION.TOP_CENTER
-            });
-            return
-        }
-        axios({
-            url : `${process.env.REACT_APP_API_BASE_URL}/user/${localStorage.getItem("username")}/blog`,
-            method : "POST",
-            headers : {
-                "Content-Type" : "application/json",
-                "Authorization" : `Bearer ${localStorage.getItem("jwtToken")}`
-            },
-            data : {
-                "title" : title,
-                "content" : content
-            }
-        })
-            .then(response=>{
-                navigate(`/blog/${response.data}`)
-            })
-            .catch(error=>{
-                console.log(error)
-                toast.error(error.response.data, {
-                    position: toast.POSITION.TOP_CENTER
-                });
-            })
-    }
-
     return (
         <div>
             <div className="homeText flex flex-row items-center justify-center md:flex-col md:mx-[10px]">
@@ -88,7 +59,7 @@ export const CreatePage = ({theme})=>{
                     sx={{
                         "& .MuiOutlinedInput-root": {
                         "& > fieldset": { borderColor: "none" },
-                        },   
+                        },
                         "& .MuiOutlinedInput-root:hover": {
                           "& > fieldset": {
                             borderColor: "pink"
@@ -98,7 +69,7 @@ export const CreatePage = ({theme})=>{
                             "& > fieldset": {
                               borderColor: "rgb(202 175 252)"
                             }
-                          }
+                        }
                     }}
                     variant="outlined"
                     value={title}
@@ -116,21 +87,21 @@ export const CreatePage = ({theme})=>{
                 {
                     (value===0) ? (
                         <TextField
-                        sx={{
-                            "& .MuiOutlinedInput-root": {
-                            "& > fieldset": { borderColor: "none" },
-                            },   
-                            "& .MuiOutlinedInput-root:hover": {
-                              "& > fieldset": {
-                                borderColor: "pink"
-                              }
-                            },
-                            "& .MuiOutlinedInput-root.Mui-focused": {
-                                "& > fieldset": {
-                                  borderColor: "rgb(202 175 252)"
+                            sx={{
+                                "& .MuiOutlinedInput-root": {
+                                    "& > fieldset": { borderColor: "none" },
+                                },
+                                "& .MuiOutlinedInput-root:hover": {
+                                    "& > fieldset": {
+                                        borderColor: "pink"
+                                    }
+                                },
+                                "& .MuiOutlinedInput-root.Mui-focused": {
+                                    "& > fieldset": {
+                                        borderColor: "rgb(202 175 252)"
+                                    }
                                 }
-                              }
-                        }}
+                            }}
                             multiline
                             value={content}
                             rows={16}
@@ -151,14 +122,15 @@ export const CreatePage = ({theme})=>{
             </div>
             <center>
                 <Button
-                className="createButton"
-                    onClick={handleCreate}
+                    className="createButton"
+                    onClick={()=>setCreateOpen(true)}
                     style={{fontSize : width> 640 ? "22px" : "15px", margin : "15px", color:"purple", border: theme==="dark"?"2px solid purple":"1px solid purple"}}
                     variant="outlined"
                 >
                     Create
                 </Button>
             </center>
+            <CreateDialog open={createOpen} setOpen={setCreateOpen} title={title} content={content} />
         </div>
     )
 }
